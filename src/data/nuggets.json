@@ -1,0 +1,16 @@
+[
+  {
+    "id": "nugget-042",
+    "number": "#042",
+    "title": "The cost of premature abstraction in TypeScript interfaces.",
+    "quote": "Keep it concrete until it repeats thrice.",
+    "icon": "bolt"
+  },
+  {
+    "id": "nugget-041",
+    "number": "#041",
+    "title": "Atomic git commits for high-frequency deployment.",
+    "quote": "One change, one context, zero side effects.",
+    "icon": "terminal"
+  }
+]

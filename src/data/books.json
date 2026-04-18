@@ -1,0 +1,22 @@
+[
+  {
+    "id": "thinking-fast-and-slow",
+    "title": "Thinking, Fast and Slow",
+    "author": "Daniel Kahneman",
+    "category": "Cognitive Architecture",
+    "description": "A deep dive into the systems of thought. Crucial for engineers who want to build products that align with how humans actually process information.",
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDI77JLJUeqYx6_ly89zyOP8GEOXl_GPYMKbsKd1RPUkwx8zJiE-zERl9LSpBBSXHQANqdI6-JBV691QW0qxWhWQ5Fp34HNdxTt3X-pTKs2Kvcmtrd4xOXFzUBC0T2NTi2whaL__2SsdVayWPGFn8anasaD2dMLc3EU-n28N2nRktzOcz6st5lDyCGGX4V1-OL-nNgWC1Oa8vReYPe8xtK_skDSsZ0zFAiX4DI0mTgzcb6vKvB9FqXRRtfo-P5KKCuVc2mQRmOeBV0",
+    "link": "#",
+    "icon": "auto_stories"
+  },
+  {
+    "id": "the-pragmatic-programmer",
+    "title": "The Pragmatic Programmer",
+    "author": "Hunt & Thomas",
+    "category": "Software Craftsmanship",
+    "description": "The bible of professional velocity. It teaches you not just to write code, but to solve problems with precision and long-term foresight.",
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuB5aY0hwkE1H7stvGLxMmqi9ntuboc2Y-1DMD7lOpyYh1s0dX6_VNOQqdAinMP5J8rjP2zYzL5n0TZVwaaRGPDQvRwZtXZk-sFDU_t-rxyqe2fyUciMPSuP2Cc9sSK7Mr6a2LkmDP3O-JOUrUxFBI0oyhjT8PO1ycBNJ5AeU_UJNjexUiXA-IYpcEaRxLjCEYWOi-e2Jvk99r0fEnXJ0LI_h4XuszqmBQS8Bht5yRyLb8TYcXUSahw21fFWzGC-4Ti1r0ioDrAIZ94",
+    "link": "#",
+    "icon": "bookmark"
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "attention-is-all-you-need",
+    "source": "ArXiv:1706.03762",
+    "title": "Attention Is All You Need",
+    "authors": "Vaswani et al.",
+    "description": "The fundamental shift toward transformer architectures. Essential for understanding how we scaled intelligence to the modern era.",
+    "link": "https://arxiv.org/abs/1706.03762",
+    "icon": "terminal"
+  },
+  {
+    "id": "deep-residual-learning",
+    "source": "Microsoft Research",
+    "title": "Deep Residual Learning",
+    "authors": "He et al.",
+    "description": "A masterclass in overcoming the vanishing gradient problem. ResNet paved the way for deeper, high-velocity neural networks.",
+    "link": "https://arxiv.org/abs/1512.03385",
+    "icon": "memory"
+  },
+  {
+    "id": "spanner-google-db",
+    "source": "Google AI",
+    "title": "Spanner: Google's DB",
+    "authors": "Corbett et al.",
+    "description": "The pinnacle of distributed systems engineering. TrueTime and global consistency at a scale that feels like magic.",
+    "link": "https://research.google/pubs/pub39966/",
+    "icon": "account_tree"
+  }
+]
