@@ -1,0 +1,8 @@
+[
+  { "id": "youtube", "system": "YouTube video processing", "flagship": true, "note": "How a raw upload fans out into a transcode pipeline — chunking, parallel encoding, adaptive-bitrate ladders, and storage." },
+  { "id": "financial-data-store", "system": "Financial data-store solutioning", "flagship": true, "note": "Storage design for market/financial data — time-series layout, hot/cold tiers, and query patterns under heavy read load." },
+  { "id": "s3", "system": "Amazon S3", "note": "The durability math and the metadata/index layer behind object storage at scale." },
+  { "id": "uber", "system": "Uber dispatch", "note": "Geospatial sharding and real-time supply/demand matching." },
+  { "id": "dropbox", "system": "Dropbox / Drive sync", "note": "Block-level sync, dedup, and conflict resolution." },
+  { "id": "instagram", "system": "Instagram feed", "note": "Fan-out-on-write vs read, and the cost of celebrity accounts." }
+]

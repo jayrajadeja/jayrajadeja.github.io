@@ -1,29 +1,4 @@
 [
-  {
-    "id": "attention-is-all-you-need",
-    "source": "ArXiv:1706.03762",
-    "title": "Attention Is All You Need",
-    "authors": "Vaswani et al.",
-    "description": "The fundamental shift toward transformer architectures. Essential for understanding how we scaled intelligence to the modern era.",
-    "link": "https://arxiv.org/abs/1706.03762",
-    "icon": "terminal"
-  },
-  {
-    "id": "deep-residual-learning",
-    "source": "Microsoft Research",
-    "title": "Deep Residual Learning",
-    "authors": "He et al.",
-    "description": "A masterclass in overcoming the vanishing gradient problem. ResNet paved the way for deeper, high-velocity neural networks.",
-    "link": "https://arxiv.org/abs/1512.03385",
-    "icon": "memory"
-  },
-  {
-    "id": "spanner-google-db",
-    "source": "Google AI",
-    "title": "Spanner: Google's DB",
-    "authors": "Corbett et al.",
-    "description": "The pinnacle of distributed systems engineering. TrueTime and global consistency at a scale that feels like magic.",
-    "link": "https://research.google/pubs/pub39966/",
-    "icon": "account_tree"
-  }
+  { "id": "gfs", "title": "The Google File System", "authors": "Ghemawat, Gobioff & Leung", "venue": "SOSP 2003", "why": "Reliable storage on unreliable commodity hardware — design for failure as the common case.", "link": "https://research.google/pubs/the-google-file-system/" },
+  { "id": "dynamo", "title": "Dynamo: Amazon's Highly Available Key-value Store", "authors": "DeCandia et al.", "venue": "SOSP 2007", "why": "Eventual consistency, quorums, and the engineering of always-on availability.", "link": "https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf" }
 ]
