@@ -1,0 +1,15 @@
+{
+  "asOf": "2026-06-01",
+  "source": "seed",
+  "note": "Placeholder baseline. Replaced by real fetched data in P3. Only symbol + changePct are displayed in the rail.",
+  "stocks": [
+    { "symbol": "NVDA", "price": 0, "changePct": 2.41 },
+    { "symbol": "AAPL", "price": 0, "changePct": -0.62 },
+    { "symbol": "TSLA", "price": 0, "changePct": 1.18 },
+    { "symbol": "MSFT", "price": 0, "changePct": 0.34 }
+  ],
+  "crypto": [
+    { "symbol": "BTC", "price": 0, "changePct": 3.1 },
+    { "symbol": "ETH", "price": 0, "changePct": 1.72 }
+  ]
+}
