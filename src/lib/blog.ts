@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import type { BlogPost } from "./types";
 
-const BLOG_DIR = path.join(process.cwd(), "content", "blog");
+const BLOG_DIR = path.join(process.cwd(), "content", "writing");
 
 export function getAllPosts(): BlogPost[] {
   const files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".mdx"));
