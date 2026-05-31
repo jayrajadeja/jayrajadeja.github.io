@@ -54,6 +54,14 @@ This section seeds `docs/knowledge/profile.md`. **It is authoritative.** When co
 - **CISO Digest** — an AI agent that analyzes threat feeds and quantifies their impact into actionable insights for executives. *(Confirmed built; Jayraj is confident discussing it.)*
 - Earlier: **software engineering internship at Mudraksh & McShaw LLP** (May–July 2019).
 
+**Verified contribution metrics (Jira + GitHub, 2021–2026 — aggregate only, safe to publish)**
+- ~5 years on SAFE's enterprise cyber-risk-quantification platform; full-stack (Go backend + React/TypeScript frontend).
+- **788** issues delivered (**695** resolved, **88%**); median cycle time **9 days**.
+- **626** pull requests (**582** merged, **93%**); ~**26** PRs/month.
+- **214,956** lines changed (+185,782 / -29,174); **2,682** commits; **4,298** files; **18** repositories.
+- **6,719** review submissions received; **1,444** discussion comments.
+- Source: `~/portfolio-export/` (Jira API + GitHub GraphQL, cross-checked). Curated safe subset stored in `src/data/stats.json`.
+
 **"Systems I've studied" (curiosity, not employment — clearly framed as study)**
 - Flagship favorites: **YouTube video processing** and **financial data store solutioning**.
 - Others studied: S3, Instagram, Dropbox, Google Drive, Google Docs, Uber.
@@ -63,6 +71,7 @@ This section seeds `docs/knowledge/profile.md`. **It is authoritative.** When co
 - Jayraj has **NOT** worked on a market-data platform and has **not** shipped a "1M+ ticks/second" production system. That was AI embellishment and is **removed**. Market data is a *studied interest*, never presented as his work.
 - The "throughput counter" must **never** claim to be his production system's metric. Live/animated numbers are framed as **markets he follows** or **representative/illustrative**, never as fabricated work output.
 - "Systems I've studied" uses **real, public, citable figures**, labeled as study notes — not as systems he operates.
+- **Disclosure (SAFE work):** publish aggregate personal metrics + a one-line domain description ONLY. Do NOT publish internal codenames, Jira issue keys, repository names, vendor/customer names, or specific feature/PR titles. Never commit the raw exports from `~/portfolio-export/`.
 
 **Interests**
 - **Formula 1** — team **Mercedes**; drivers **Lewis Hamilton** and **Max Verstappen**.
