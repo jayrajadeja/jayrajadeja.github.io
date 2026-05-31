@@ -1,8 +1,25 @@
+import stats from "@/data/stats.json";
+
+const metric = (label: string): number =>
+  stats.headline.find((h) => h.label === label)?.value ?? 0;
+
 const STATS = [
-  { value: "05", label: "Years Expertise", accent: "text-tertiary" },
-  { value: "42+", label: "Production Releases", accent: "text-primary" },
-  { value: "1.2M", label: "Lines of Logic", accent: "text-tertiary" },
-  { value: "∞", label: "Kinetic Energy", accent: "text-primary" },
+  { value: stats.tenureYears, label: "Years at SAFE", accent: "text-tertiary" },
+  {
+    value: metric("issues delivered").toLocaleString("en-US"),
+    label: "Issues Delivered",
+    accent: "text-primary",
+  },
+  {
+    value: metric("pull requests").toLocaleString("en-US"),
+    label: "Pull Requests",
+    accent: "text-tertiary",
+  },
+  {
+    value: metric("lines changed").toLocaleString("en-US"),
+    label: "Lines Changed",
+    accent: "text-primary",
+  },
 ];
 
 export default function StatsSection() {
@@ -23,6 +40,9 @@ export default function StatsSection() {
             </div>
           ))}
         </div>
+        <p className="mt-12 text-center font-mono text-[11px] uppercase tracking-widest text-outline/70">
+          Verified across Jira + GitHub · 2021–2026
+        </p>
       </div>
     </section>
   );

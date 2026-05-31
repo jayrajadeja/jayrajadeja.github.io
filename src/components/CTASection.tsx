@@ -8,7 +8,7 @@ export default function CTASection() {
       <div className="flex flex-col md:flex-row justify-center gap-8 items-center">
         <a
           className="text-2xl italic hover:text-tertiary transition-colors underline underline-offset-8 decoration-primary/30"
-          href="mailto:contact@jayraj.dev"
+          href="mailto:jayrajsinh.jadeja399@gmail.com"
         >
           Get in touch
         </a>
