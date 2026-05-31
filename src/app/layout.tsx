@@ -49,8 +49,10 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-surface text-on-surface min-h-screen flex flex-col selection:bg-primary selection:text-on-primary">
-        <Navbar />
-        <TickerRail />
+        <header className="fixed top-0 inset-x-0 z-50">
+          <Navbar />
+          <TickerRail />
+        </header>
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

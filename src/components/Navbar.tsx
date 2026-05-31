@@ -4,22 +4,26 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/blog", label: "Blog" },
-  { href: "/library", label: "Library" },
-  { href: "/interests", label: "Interests" },
+  { href: "/", label: "home" },
+  { href: "/work", label: "work" },
+  { href: "/writing", label: "writing" },
+  { href: "/interests", label: "interests" },
+  { href: "/about", label: "about" },
+  { href: "/now", label: "now" },
+  { href: "/uses", label: "uses" },
 ];
+
+const RESUME_URL =
+  "https://drive.google.com/file/d/1tleUFEbGJ4Se847v0RVS3qQ_4kZL-dS0/view?usp=sharing";
 
 export default function Navbar() {
   const pathname = usePathname();
 
-  const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
-  };
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-surface/60 backdrop-blur-xl">
+    <nav className="w-full bg-surface/70 backdrop-blur-xl">
       <div className="flex justify-between items-center max-w-7xl mx-auto px-8 py-4">
         <Link
           href="/"
@@ -28,29 +32,30 @@ export default function Navbar() {
           J. JADEJA
         </Link>
 
-        <div className="hidden md:flex items-center gap-10 font-headline">
+        <div className="hidden md:flex items-center gap-6 font-mono text-sm">
           {NAV_LINKS.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
               className={
                 isActive(href)
-                  ? "text-primary border-b-2 border-primary pb-1 font-medium"
-                  : "text-gray-400 font-medium hover:text-white transition-colors"
+                  ? "text-tertiary"
+                  : "text-on-surface-variant hover:text-on-surface transition-colors"
               }
             >
+              <span className="text-outline">/</span>
               {label}
             </Link>
           ))}
         </div>
 
         <a
-          href="/resume.pdf"
+          href={RESUME_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-primary text-on-primary font-headline px-6 py-2 rounded-sm text-sm font-bold uppercase tracking-widest hover:bg-tertiary transition-all duration-300"
+          className="font-mono text-xs font-bold uppercase tracking-widest bg-primary text-on-primary px-5 py-2 rounded-sm hover:bg-tertiary transition-all duration-300"
         >
-          Resume
+          résumé
         </a>
       </div>
     </nav>
