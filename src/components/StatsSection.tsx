@@ -4,7 +4,7 @@ const metric = (label: string): number =>
   stats.headline.find((h) => h.label === label)?.value ?? 0;
 
 const STATS = [
-  { value: stats.tenureYears, label: "Years at SAFE", accent: "text-tertiary" },
+  { value: stats.tenureYears, label: "Years Engineering", accent: "text-tertiary" },
   {
     value: metric("issues delivered").toLocaleString("en-US"),
     label: "Issues Delivered",

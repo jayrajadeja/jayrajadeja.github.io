@@ -140,7 +140,7 @@ export default function AboutPage() {
           The full record — who I am, how I work, and how to reach me.
         </p>
         <p className="mt-3 font-mono text-xs uppercase tracking-[0.15em] text-outline">
-          <StatusDot color="up">open to new opportunities · {stats.tenureYears} years at SAFE Security</StatusDot>
+          <StatusDot color="up">open to new opportunities · {stats.tenureYears} years in engineering</StatusDot>
         </p>
       </section>
 
