@@ -6,55 +6,10 @@ import Eyebrow from "@/components/Eyebrow";
 export const metadata: Metadata = {
   title: "Uses",
   description:
-    "The editor, terminal, languages, and datastores behind Jayraj Jadeja's engineering work.",
+    "The editors, terminals, languages, data tooling, and AI in the loop behind Jayraj Jadeja's engineering work.",
 };
 
 const uses = usesData as UsesData;
-
-type SpecRowProps = {
-  label: string;
-  value: string;
-};
-
-function SpecRow({ label, value }: SpecRowProps) {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-[10rem_1fr] gap-x-8 gap-y-1 py-5">
-      <dt className="font-mono text-xs uppercase tracking-[0.2em] text-tertiary pt-0.5">
-        {label}
-      </dt>
-      <dd className="font-body text-lg leading-relaxed text-on-surface-variant">
-        {value}
-      </dd>
-    </div>
-  );
-}
-
-type SpecListRowProps = {
-  label: string;
-  items: string[];
-};
-
-function SpecListRow({ label, items }: SpecListRowProps) {
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-[10rem_1fr] gap-x-8 gap-y-1 py-5">
-      <dt className="font-mono text-xs uppercase tracking-[0.2em] text-tertiary pt-0.5">
-        {label}
-      </dt>
-      <dd>
-        <ul className="flex flex-wrap gap-2" aria-label={label}>
-          {items.map((item) => (
-            <li
-              key={item}
-              className="font-mono text-[11px] uppercase tracking-[0.1em] text-on-surface-variant border border-outline-variant/40 rounded-md px-2 py-1"
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
-      </dd>
-    </div>
-  );
-}
 
 export default function UsesPage() {
   return (
@@ -69,28 +24,45 @@ export default function UsesPage() {
           Uses
         </h1>
         <p className="mt-6 max-w-2xl font-body text-xl md:text-2xl italic leading-relaxed text-on-surface-variant">
-          The editor, terminal, languages, and datastores behind the work.
+          The tools behind the work — editors, terminals, languages, data, and
+          the AI in the loop.
+        </p>
+        <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-outline">
+          updated {uses.updated}
         </p>
       </section>
 
-      {/* ── Spec list ────────────────────────────────────────────── */}
-      <section aria-labelledby="uses-spec-heading" className="mb-16">
+      {/* ── Categories ───────────────────────────────────────────── */}
+      <section aria-labelledby="uses-spec-heading">
         <h2 id="uses-spec-heading" className="sr-only">
           Setup
         </h2>
 
         <dl className="divide-y divide-outline-variant/30 border-t border-outline-variant/30">
-          <SpecRow label="editor" value={uses.editor} />
-          <SpecRow label="terminal" value={uses.terminal} />
-          <SpecListRow label="languages" items={uses.languages} />
-          <SpecListRow label="datastores" items={uses.datastores} />
+          {uses.sections.map((section) => (
+            <div
+              key={section.title}
+              className="grid grid-cols-1 md:grid-cols-[13rem_1fr] gap-x-8 gap-y-3 py-6"
+            >
+              <dt className="font-mono text-xs uppercase tracking-[0.2em] text-tertiary pt-0.5">
+                {section.title}
+              </dt>
+              <dd>
+                <ul className="flex flex-wrap gap-2" aria-label={section.title}>
+                  {section.items.map((item) => (
+                    <li
+                      key={item}
+                      className="font-mono text-[11px] uppercase tracking-[0.1em] text-on-surface-variant border border-outline-variant/40 rounded-md px-2.5 py-1"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </dd>
+            </div>
+          ))}
         </dl>
       </section>
-
-      {/* ── Provisional note ─────────────────────────────────────── */}
-      <p className="font-body text-sm italic text-on-surface-variant border-t border-outline-variant/30 pt-6">
-        {uses.note}
-      </p>
     </div>
   );
 }

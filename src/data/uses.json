@@ -1,7 +1,11 @@
 {
-  "editor": "VS Code",
-  "terminal": "zsh",
-  "languages": ["Go", "TypeScript"],
-  "datastores": ["MySQL"],
-  "note": "Placeholder setup — to be personalized by Jayraj."
+  "updated": "2026-06",
+  "sections": [
+    { "title": "Editor & IDE", "items": ["VS Code", "Cursor"] },
+    { "title": "Terminal & shell", "items": ["Warp", "Zsh"] },
+    { "title": "Operating systems", "items": ["macOS", "Windows", "Linux"] },
+    { "title": "Languages & runtimes", "items": ["Go", "TypeScript", "Python"] },
+    { "title": "Data & infra", "items": ["MySQL", "PostgreSQL", "DynamoDB", "Temporal", "Message queues", "AWS"] },
+    { "title": "AI & dev tooling", "items": ["Claude Code", "GitHub Copilot", "Postman"] }
+  ]
 }

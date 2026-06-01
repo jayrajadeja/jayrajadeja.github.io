@@ -158,11 +158,8 @@ Dev setup for the `/uses` page.
 
 | Field | Type | Notes |
 |-------|------|-------|
-| `editor` | `string` | e.g. `"VS Code"` |
-| `terminal` | `string` | e.g. `"zsh"` |
-| `languages` | `string[]` | Primary languages |
-| `datastores` | `string[]` | Primary databases |
-| `note` | `string` | Free-form additional notes |
+| `updated` | `string` | `"YYYY-MM"` |
+| `sections` | `{ title: string; items: string[] }[]` | Each = a category label + its tools as chips, e.g. `{ "title": "Editor & IDE", "items": ["VS Code", "Cursor"] }` |
 
 Page consumer: `/uses`
 
