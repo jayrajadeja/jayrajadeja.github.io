@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Newsreader } from "next/font/google";
+import { Space_Grotesk, Newsreader, JetBrains_Mono } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import TickerRail from "@/components/instruments/TickerRail";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -16,13 +17,19 @@ const newsreader = Newsreader({
   display: "swap",
 });
 
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: {
     default: "JAYRAJ JADEJA | Software Engineer",
     template: "%s | J. JADEJA",
   },
   description:
-    "Architecting high-velocity digital systems where technical precision meets editorial depth. Engineering for scalability, performance, and human intent.",
+    "Backend & distributed systems engineer. I take systems apart to see how they tick — Temporal workflows, multi-region data movement, event-driven scaling, and the markets underneath.",
 };
 
 export default function RootLayout({
@@ -33,7 +40,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${spaceGrotesk.variable} ${newsreader.variable}`}
+      className={`dark ${spaceGrotesk.variable} ${newsreader.variable} ${jetbrainsMono.variable}`}
     >
       <head>
         <link
@@ -42,7 +49,10 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-surface text-on-surface min-h-screen flex flex-col selection:bg-primary selection:text-on-primary">
-        <Navbar />
+        <header className="fixed top-0 inset-x-0 z-50">
+          <Navbar />
+          <TickerRail />
+        </header>
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

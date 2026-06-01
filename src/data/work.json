@@ -1,0 +1,30 @@
+[
+  {
+    "id": "ciso-digest",
+    "title": "CISO Digest — AI threat-intel agent",
+    "summary": "An AI agent that ingests security threat feeds and quantifies their business impact into prioritized, executive-ready insights.",
+    "stack": ["AI / LLM", "Go", "event-driven"],
+    "tags": ["AI", "security", "automation"]
+  },
+  {
+    "id": "workflow-as-a-service",
+    "title": "Workflow-as-a-Service on Temporal",
+    "summary": "Durable, event-driven workflow orchestration on Temporal — composable flows with retries, timers, and human-in-the-loop steps at platform scale.",
+    "stack": ["Go", "Temporal", "event-driven"],
+    "tags": ["distributed-systems", "workflows"]
+  },
+  {
+    "id": "multi-region-data",
+    "title": "Multi-region, cross-stack data movement",
+    "summary": "Moving data reliably across regions and heterogeneous stacks — consistency, backpressure, and failure handling under real throughput.",
+    "stack": ["Go", "MySQL", "messaging"],
+    "tags": ["distributed-systems", "data"]
+  },
+  {
+    "id": "event-driven-scaling",
+    "title": "Scaling with event-driven architecture",
+    "summary": "Re-architecting hot paths around events to raise throughput and decouple services — with database and query optimization underneath.",
+    "stack": ["Go", "MySQL", "events"],
+    "tags": ["performance", "databases"]
+  }
+]

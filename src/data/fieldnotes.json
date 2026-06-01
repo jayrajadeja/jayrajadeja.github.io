@@ -1,0 +1,5 @@
+[
+  { "id": "fn-001", "number": "001", "title": "Most slow queries are a missing composite index, not a slow database.", "quote": "Read the EXPLAIN before you blame the engine.", "tag": "MySQL" },
+  { "id": "fn-002", "number": "002", "title": "MySQL's null-safe equality (<=>) quietly saves you from NULL-comparison bugs.", "quote": "= lies about NULL; <=> tells the truth.", "tag": "MySQL" },
+  { "id": "fn-003", "number": "003", "title": "Durable workflows turn 'retry logic' from app code into a platform guarantee.", "quote": "Let the workflow engine remember, so your services don't have to.", "tag": "Temporal" }
+]

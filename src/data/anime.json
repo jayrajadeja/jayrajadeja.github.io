@@ -1,0 +1,6 @@
+[
+  { "id": "naruto", "title": "Naruto", "kind": "anime" },
+  { "id": "one-piece", "title": "One Piece", "kind": "manga" },
+  { "id": "haikyuu", "title": "Haikyuu!!", "kind": "anime" },
+  { "id": "jjk", "title": "Jujutsu Kaisen", "kind": "anime" }
+]

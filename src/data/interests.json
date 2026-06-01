@@ -1,0 +1,5 @@
+{
+  "f1": { "favoriteTeam": "Mercedes", "favoriteDrivers": ["Lewis Hamilton", "Max Verstappen"], "note": "Team I root for: Mercedes. Drivers I rate: Hamilton and Verstappen — extreme engineering, data-driven decisions, and human limit-testing." },
+  "markets": { "note": "NASDAQ names and market fundamentals — reading the mechanics underneath the price.", "focus": ["NASDAQ", "fundamentals", "crypto"] },
+  "sport": { "note": "Table tennis and badminton — fast hands, faster decisions." }
+}

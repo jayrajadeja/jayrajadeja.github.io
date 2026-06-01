@@ -1,0 +1,40 @@
+{
+  "asOf": "2026-06-01",
+  "source": "Jira API + GitHub GraphQL, cross-checked against local git",
+  "tenureYears": "5+",
+  "domain": "Full-stack engineer on an enterprise cyber-risk-quantification platform (Go backend + React/TypeScript frontend).",
+  "headline": [
+    { "label": "issues delivered", "value": 788 },
+    { "label": "issues resolved", "value": 695, "pct": 88 },
+    { "label": "pull requests", "value": 626 },
+    { "label": "PRs merged", "value": 582, "pct": 93 },
+    { "label": "lines changed", "value": 214956 },
+    { "label": "commits", "value": 2682 },
+    { "label": "files changed", "value": 4298 },
+    { "label": "repositories", "value": 18 },
+    { "label": "review submissions", "value": 6719 },
+    { "label": "median cycle time (days)", "value": 9 }
+  ],
+  "cadence": { "issuesPerYear": 157, "prsPerMonth": 26 },
+  "issuesByYear": [
+    { "year": 2021, "created": 66, "resolved": 52 },
+    { "year": 2022, "created": 68, "resolved": 60 },
+    { "year": 2023, "created": 109, "resolved": 92 },
+    { "year": 2024, "created": 207, "resolved": 182 },
+    { "year": 2025, "created": 205, "resolved": 192 },
+    { "year": 2026, "created": 133, "resolved": 117 }
+  ],
+  "prsByYear": [
+    { "year": 2024, "created": 161, "merged": 156 },
+    { "year": 2025, "created": 342, "merged": 322 },
+    { "year": 2026, "created": 123, "merged": 104 }
+  ],
+  "issuesByType": [
+    { "type": "Story", "count": 621 },
+    { "type": "Bug", "count": 119 },
+    { "type": "Sub-task", "count": 20 },
+    { "type": "Customer Feedback", "count": 12 },
+    { "type": "Support", "count": 11 },
+    { "type": "Epic", "count": 5 }
+  ]
+}
