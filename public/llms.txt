@@ -1,0 +1,28 @@
+# Jayraj Jadeja — Software Engineer
+
+> Backend & distributed-systems engineer (5+ years), Bengaluru. I take systems apart to see how they tick — and write about where high-performance engineering meets market fundamentals. This is a personal portfolio: a statically-exported Next.js "living data system" (an editorial broadsheet opened by a terminal hero). All content is real and aggregate — no fabricated metrics, no "live"-mislabeled data.
+
+## Pages
+- [Home](https://jayrajadeja.github.io/): terminal hero (whoami + real delivery telemetry), selected work, latest writing, verified stats
+- [Work](https://jayrajadeja.github.io/work): case files (AI threat-intel agent, Temporal workflow orchestration, multi-region data movement, event-driven scaling) + experience timeline
+- [Writing](https://jayrajadeja.github.io/writing): finance × engineering essays (Substack) + short technical field notes
+- [Interests](https://jayrajadeja.github.io/interests): Formula 1, markets, anime/manga, sport, a reading shelf, and systems I've studied (YouTube video processing, financial data stores, S3, Uber, plus the GFS & Dynamo papers)
+- [About](https://jayrajadeja.github.io/about): bio, verified Jira + GitHub contribution metrics (aggregate), education, contact
+- [Now](https://jayrajadeja.github.io/now): what I'm building, reading, watching
+- [Uses](https://jayrajadeja.github.io/uses): editor, terminal, stack
+
+## Stack & approach
+- Backend & distributed systems: Go, TypeScript, Temporal workflows, MySQL/query optimization, event-driven architecture, multi-region data movement.
+- Studies large-scale system design (S3, Uber, YouTube, Dropbox, Dynamo, GFS) as a standing interest.
+- Writes at the intersection of finance and engineering.
+
+## Contact
+- GitHub: https://github.com/jayrajadeja
+- LinkedIn: https://www.linkedin.com/in/jayrajadeja/
+- Substack: https://substack.com/@jayrajadeja
+- Email: jayrajsinh.jadeja399@gmail.com
+
+## For agents working on this repository
+- Start with `AGENTS.md` and `docs/knowledge/profile.md` (the single source of truth for facts + honesty rules).
+- Knowledge base: `docs/knowledge/{profile,content-model,design-system,data-pipeline,voice}.md`.
+- Honesty rules: all content is real and interview-defensible; employer (SAFE Security) detail is limited to aggregate metrics + a one-line domain and is named only in the experience entry; the market ticker is labeled `illustrative` until real data is fetched; never fabricate.

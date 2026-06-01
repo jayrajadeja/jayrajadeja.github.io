@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import Metric from "@/components/instruments/Metric";
+import CountUp from "@/components/instruments/CountUp";
 import Sparkline from "@/components/instruments/Sparkline";
 import StatusDot from "@/components/instruments/StatusDot";
+import Eyebrow from "@/components/Eyebrow";
+import SectionHeader from "@/components/SectionHeader";
 import stats from "@/data/stats.json";
 
 export const metadata: Metadata = {
@@ -12,38 +14,8 @@ export const metadata: Metadata = {
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
-function metric(label: string): number {
+function metricVal(label: string): number {
   return stats.headline.find((h) => h.label === label)?.value ?? 0;
-}
-
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="font-mono text-xs uppercase tracking-[0.3em] text-tertiary">
-      {children}
-    </span>
-  );
-}
-
-function SectionHeader({
-  eyebrow,
-  id,
-  children,
-}: {
-  eyebrow: string;
-  id: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="flex items-baseline gap-4 border-b-2 border-on-surface pb-4 mb-8">
-      <Eyebrow>{eyebrow}</Eyebrow>
-      <h2
-        id={id}
-        className="font-headline text-2xl md:text-3xl font-bold tracking-tight"
-      >
-        {children}
-      </h2>
-    </div>
-  );
 }
 
 // ── Data slices ───────────────────────────────────────────────────────────────
@@ -56,61 +28,61 @@ const mergedPct =
 const HEADLINE_METRICS = [
   {
     label: "issues delivered",
-    value: metric("issues delivered").toLocaleString("en-US"),
+    end: metricVal("issues delivered"),
     unit: undefined,
     accent: "primary" as const,
   },
   {
     label: `resolved (${resolvedPct}%)`,
-    value: metric("issues resolved").toLocaleString("en-US"),
+    end: metricVal("issues resolved"),
     unit: undefined,
     accent: "primary" as const,
   },
   {
     label: "pull requests",
-    value: metric("pull requests").toLocaleString("en-US"),
+    end: metricVal("pull requests"),
     unit: undefined,
     accent: "tertiary" as const,
   },
   {
     label: `merged (${mergedPct}%)`,
-    value: metric("PRs merged").toLocaleString("en-US"),
+    end: metricVal("PRs merged"),
     unit: undefined,
     accent: "tertiary" as const,
   },
   {
     label: "lines changed",
-    value: metric("lines changed").toLocaleString("en-US"),
+    end: metricVal("lines changed"),
     unit: undefined,
     accent: "primary" as const,
   },
   {
     label: "commits",
-    value: metric("commits").toLocaleString("en-US"),
+    end: metricVal("commits"),
     unit: undefined,
     accent: "primary" as const,
   },
   {
     label: "files changed",
-    value: metric("files changed").toLocaleString("en-US"),
+    end: metricVal("files changed"),
     unit: undefined,
     accent: "tertiary" as const,
   },
   {
     label: "repositories",
-    value: metric("repositories").toLocaleString("en-US"),
+    end: metricVal("repositories"),
     unit: undefined,
     accent: "tertiary" as const,
   },
   {
     label: "review submissions",
-    value: metric("review submissions").toLocaleString("en-US"),
+    end: metricVal("review submissions"),
     unit: undefined,
     accent: "primary" as const,
   },
   {
     label: "median cycle time",
-    value: metric("median cycle time (days)").toLocaleString("en-US"),
+    end: metricVal("median cycle time (days)"),
     unit: " days",
     accent: "tertiary" as const,
   },
@@ -193,15 +165,21 @@ export default function AboutPage() {
 
         {/* 3a. Headline metric grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-8 gap-y-8 mb-12">
-          {HEADLINE_METRICS.map((m) => (
-            <Metric
-              key={m.label}
-              label={m.label}
-              value={m.value}
-              unit={m.unit}
-              accent={m.accent}
-            />
-          ))}
+          {HEADLINE_METRICS.map((m) => {
+            const color =
+              m.accent === "tertiary" ? "text-tertiary" : "text-primary";
+            return (
+              <div key={m.label}>
+                <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-outline">
+                  {m.label}
+                </div>
+                <div className={`font-mono text-2xl font-bold ${color}`}>
+                  <CountUp end={m.end} />
+                  {m.unit && <span className="text-sm">{m.unit}</span>}
+                </div>
+              </div>
+            );
+          })}
         </div>
 
         {/* 3b. Year-over-year sparklines */}
@@ -299,7 +277,7 @@ export default function AboutPage() {
         </div>
 
         {/* Caption */}
-        <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-outline/70">
+        <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-outline">
           Verified across Jira + GitHub · 2021–2026 · Aggregate only
         </p>
       </section>
@@ -359,7 +337,7 @@ export default function AboutPage() {
       {/* ── 5. Résumé + contact ──────────────────────────────────── */}
       <section
         aria-labelledby="contact-heading"
-        className="border-t-2 border-on-surface pt-10"
+        className="border-t border-outline-variant/30 pt-10"
       >
         <Eyebrow>/contact</Eyebrow>
         <h2

@@ -30,4 +30,10 @@ describe("formatGrouped", () => {
   it("adds thousands separators", () => {
     expect(formatGrouped(1024873)).toBe("1,024,873");
   });
+  it("handles zero", () => {
+    expect(formatGrouped(0)).toBe("0");
+  });
+  it("handles small numbers without separator", () => {
+    expect(formatGrouped(42)).toBe("42");
+  });
 });

@@ -4,15 +4,17 @@ import animeRaw from "@/data/anime.json";
 import booksRaw from "@/data/books.json";
 import papersRaw from "@/data/papers.json";
 import systemsRaw from "@/data/systems.json";
+import f1DataRaw from "@/data/f1.json";
 import type {
   InterestsData,
   AnimeEntry,
   Book,
   ResearchPaper,
   StudiedSystem,
+  F1Data,
 } from "@/lib/types";
-import TickerChip from "@/components/instruments/TickerChip";
-import Sparkline from "@/components/instruments/Sparkline";
+import Eyebrow from "@/components/Eyebrow";
+import SectionHeader from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
   title: "Curated Interests",
@@ -25,42 +27,10 @@ const anime = animeRaw as AnimeEntry[];
 const books = booksRaw as Book[];
 const papers = papersRaw as ResearchPaper[];
 const systems = systemsRaw as StudiedSystem[];
+const f1 = f1DataRaw as F1Data;
 
 const flagships = systems.filter((s) => s.flagship);
 const compact = systems.filter((s) => !s.flagship);
-
-// Decorative sparkline — illustrative shape only, not real market data
-const SPARKLINE_POINTS = [28, 30, 27, 32, 31, 35, 33, 36, 34, 38, 37, 40];
-
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="font-mono text-xs uppercase tracking-[0.3em] text-tertiary">
-      {children}
-    </span>
-  );
-}
-
-function SectionHeader({
-  eyebrow,
-  id,
-  children,
-}: {
-  eyebrow: string;
-  id: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="flex items-baseline gap-4 border-b-2 border-on-surface pb-4 mb-8">
-      <Eyebrow>{eyebrow}</Eyebrow>
-      <h2
-        id={id}
-        className="font-headline text-2xl md:text-3xl font-bold tracking-tight"
-      >
-        {children}
-      </h2>
-    </div>
-  );
-}
 
 export default function InterestsPage() {
   return (
@@ -118,6 +88,33 @@ export default function InterestsPage() {
         <p className="mt-6 max-w-2xl font-body text-lg leading-relaxed text-on-surface-variant">
           {interests.f1.note}
         </p>
+
+        {/* F1 latest — renders only when real data exists (not seed null state) */}
+        {(f1.leader || f1.lastRace) && (
+          <div className="mt-6 bg-surface-container-low rounded-lg px-5 py-4 border border-outline-variant/30 inline-flex flex-col gap-1.5">
+            {f1.leader && (
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-on-surface-variant">
+                <span className="text-tertiary">Championship Leader</span>
+                {" · "}
+                {f1.leader.driver}
+                {" — "}
+                {f1.leader.points} pts
+                {f1.leader.constructor && ` · ${f1.leader.constructor}`}
+                {` · ${f1.leader.wins} win${f1.leader.wins !== 1 ? "s" : ""}`}
+              </p>
+            )}
+            {f1.lastRace?.winner && (
+              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-on-surface-variant">
+                <span className="text-tertiary">Last Race</span>
+                {" · "}
+                {f1.lastRace.name}: won by {f1.lastRace.winner}
+              </p>
+            )}
+            <p className="font-mono text-[10px] tracking-[0.12em] text-outline">
+              · live via Jolpica · as of {f1.asOf}
+            </p>
+          </div>
+        )}
       </section>
 
       {/* ── 3. Markets ───────────────────────────────────────────── */}
@@ -142,24 +139,6 @@ export default function InterestsPage() {
           ))}
         </ul>
 
-        {/* Decorative instrument accent */}
-        <div
-          className="bg-surface-container-low rounded-lg px-6 py-5 border border-outline-variant/30"
-          aria-label="Decorative market accent — illustrative only, not real-time data"
-        >
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-outline mb-3">
-            Illustrative · not real-time · not financial advice
-          </p>
-          <div className="flex flex-wrap gap-x-8 gap-y-2 mb-4">
-            <TickerChip symbol="AAPL" changePct={1.24} />
-            <TickerChip symbol="QQQ" changePct={0.87} />
-            <TickerChip symbol="NVDA" changePct={-0.53} />
-          </div>
-          <Sparkline
-            points={SPARKLINE_POINTS}
-            className="text-tertiary/50 max-w-xs"
-          />
-        </div>
       </section>
 
       {/* ── 4. Anime & manga ─────────────────────────────────────── */}

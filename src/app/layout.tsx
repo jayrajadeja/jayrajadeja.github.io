@@ -30,6 +30,19 @@ export const metadata: Metadata = {
   },
   description:
     "Backend & distributed systems engineer. I take systems apart to see how they tick — Temporal workflows, multi-region data movement, event-driven scaling, and the markets underneath.",
+  metadataBase: new URL("https://jayrajadeja.github.io"),
+  openGraph: {
+    title: "Jayraj Jadeja — Software Engineer",
+    description: "Backend & distributed systems engineer. I take systems apart to see how they tick.",
+    url: "https://jayrajadeja.github.io",
+    siteName: "Jayraj Jadeja",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jayraj Jadeja — Software Engineer",
+    description: "Backend & distributed systems engineer. I take systems apart to see how they tick.",
+  },
 };
 
 export default function RootLayout({
