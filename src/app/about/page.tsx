@@ -118,6 +118,8 @@ const HEADLINE_METRICS = [
 
 // Bar width as a percentage of the max count in issuesByType
 const maxTypeCount = Math.max(...stats.issuesByType.map((t) => t.count));
+const maxCreated = Math.max(...stats.issuesByYear.map((r) => r.created));
+const maxMerged = Math.max(...stats.prsByYear.map((r) => r.merged));
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
@@ -196,6 +198,7 @@ export default function AboutPage() {
               key={m.label}
               label={m.label}
               value={m.value}
+              unit={m.unit}
               accent={m.accent}
             />
           ))}
@@ -210,7 +213,6 @@ export default function AboutPage() {
             </p>
             <div className="flex items-end gap-1 mb-2" aria-label="Issues created per year bar chart">
               {stats.issuesByYear.map((y) => {
-                const maxCreated = Math.max(...stats.issuesByYear.map((r) => r.created));
                 const heightPct = Math.round((y.created / maxCreated) * 100);
                 return (
                   <div key={y.year} className="flex-1 flex flex-col items-center gap-1">
@@ -241,7 +243,6 @@ export default function AboutPage() {
             </p>
             <div className="flex items-end gap-1 mb-2" aria-label="Pull requests merged per year bar chart">
               {stats.prsByYear.map((y) => {
-                const maxMerged = Math.max(...stats.prsByYear.map((r) => r.merged));
                 const heightPct = Math.round((y.merged / maxMerged) * 100);
                 return (
                   <div key={y.year} className="flex-1 flex flex-col items-center gap-1">
