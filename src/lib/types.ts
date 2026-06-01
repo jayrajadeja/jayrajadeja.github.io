@@ -78,11 +78,8 @@ export interface NowData {
 }
 
 export interface UsesData {
-  editor: string;
-  terminal: string;
-  languages: string[];
-  datastores: string[];
-  note: string;
+  updated: string;
+  sections: { title: string; items: string[] }[];
 }
 
 export interface F1Data {
