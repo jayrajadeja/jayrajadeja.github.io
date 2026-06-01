@@ -84,3 +84,10 @@ export interface UsesData {
   datastores: string[];
   note: string;
 }
+
+export interface F1Data {
+  asOf: string;
+  source: string;
+  lastRace: { round: number; season: string; name: string; date: string; winner: string | null } | null;
+  leader: { driver: string; points: number; wins: number; constructor: string | null } | null;
+}

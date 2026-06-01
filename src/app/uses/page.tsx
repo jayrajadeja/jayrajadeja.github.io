@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import usesData from "@/data/uses.json";
 import type { UsesData } from "@/lib/types";
+import Eyebrow from "@/components/Eyebrow";
 
 export const metadata: Metadata = {
   title: "Uses",
@@ -9,14 +10,6 @@ export const metadata: Metadata = {
 };
 
 const uses = usesData as UsesData;
-
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="font-mono text-xs uppercase tracking-[0.3em] text-tertiary">
-      {children}
-    </span>
-  );
-}
 
 type SpecRowProps = {
   label: string;
@@ -95,7 +88,7 @@ export default function UsesPage() {
       </section>
 
       {/* ── Provisional note ─────────────────────────────────────── */}
-      <p className="font-body text-sm italic text-on-surface-variant/60 border-t border-outline-variant/20 pt-6">
+      <p className="font-body text-sm italic text-on-surface-variant border-t border-outline-variant/30 pt-6">
         {uses.note}
       </p>
     </div>

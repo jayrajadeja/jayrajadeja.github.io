@@ -1,0 +1,17 @@
+{
+  "asOf": "2026-06-01",
+  "source": "build",
+  "lastRace": {
+    "round": 5,
+    "season": "2026",
+    "name": "Canadian Grand Prix",
+    "date": "2026-05-24",
+    "winner": "Andrea Kimi Antonelli"
+  },
+  "leader": {
+    "driver": "Andrea Kimi Antonelli",
+    "points": 131,
+    "wins": 4,
+    "constructor": "Mercedes"
+  }
+}

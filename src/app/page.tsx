@@ -3,6 +3,7 @@ import StatsSection from "@/components/StatsSection";
 import TerminalBlock from "@/components/instruments/TerminalBlock";
 import Metric from "@/components/instruments/Metric";
 import StatusDot from "@/components/instruments/StatusDot";
+import Eyebrow from "@/components/Eyebrow";
 import { getAllPosts } from "@/lib/blog";
 import stats from "@/data/stats.json";
 import work from "@/data/work.json";
@@ -32,14 +33,6 @@ const HERO_METRICS = [
 
 const CaseFiles = work as WorkCaseFile[];
 const Now = now as NowData;
-
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="font-mono text-xs uppercase tracking-[0.3em] text-tertiary">
-      {children}
-    </span>
-  );
-}
 
 export default function HomePage() {
   const posts = getAllPosts().slice(0, 2);
@@ -87,7 +80,7 @@ export default function HomePage() {
             />
           ))}
         </div>
-        <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.15em] text-outline/70">
+        <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.15em] text-outline">
           Delivery telemetry · Jira + GitHub · 2021–2026
         </p>
 
@@ -119,7 +112,7 @@ export default function HomePage() {
 
       {/* ── 2. Selected work ─────────────────────────────────────── */}
       <section aria-labelledby="work-heading" className="mb-28">
-        <div className="flex items-baseline justify-between border-b-2 border-on-surface pb-4">
+        <div className="flex items-baseline justify-between border-b border-outline-variant/30 pb-4">
           <div className="flex items-baseline gap-4">
             <Eyebrow>/work</Eyebrow>
             <h2
@@ -181,7 +174,7 @@ export default function HomePage() {
 
       {/* ── 3. Latest writing ────────────────────────────────────── */}
       <section aria-labelledby="writing-heading" className="mb-28">
-        <div className="flex items-baseline gap-4 border-b-2 border-on-surface pb-4">
+        <div className="flex items-baseline gap-4 border-b border-outline-variant/30 pb-4">
           <Eyebrow>/writing</Eyebrow>
           <h2
             id="writing-heading"
@@ -227,7 +220,7 @@ export default function HomePage() {
 
       {/* ── 4. Currently ─────────────────────────────────────────── */}
       <section aria-labelledby="now-heading" className="mb-28">
-        <div className="flex items-baseline gap-4 border-b-2 border-on-surface pb-4">
+        <div className="flex items-baseline gap-4 border-b border-outline-variant/30 pb-4">
           <Eyebrow>/now</Eyebrow>
           <h2
             id="now-heading"
@@ -269,7 +262,7 @@ export default function HomePage() {
       {/* ── 6. CTA — slim closing ────────────────────────────────── */}
       <section
         aria-labelledby="cta-heading"
-        className="border-t-2 border-on-surface pt-10"
+        className="border-t border-outline-variant/30 pt-10"
       >
         <Eyebrow>/contact</Eyebrow>
         <h2

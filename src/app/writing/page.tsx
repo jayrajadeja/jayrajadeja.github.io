@@ -3,6 +3,8 @@ import Link from "next/link";
 import { getAllPosts } from "@/lib/blog";
 import fieldnotesData from "@/data/fieldnotes.json";
 import type { FieldNote } from "@/lib/types";
+import Eyebrow from "@/components/Eyebrow";
+import SectionHeader from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
   title: "The Desk",
@@ -11,14 +13,6 @@ export const metadata: Metadata = {
 };
 
 const FieldNotes = fieldnotesData as FieldNote[];
-
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="font-mono text-xs uppercase tracking-[0.3em] text-tertiary">
-      {children}
-    </span>
-  );
-}
 
 export default function WritingPage() {
   const posts = getAllPosts();
@@ -81,15 +75,9 @@ export default function WritingPage() {
 
       {/* ── 3. Long-form posts ────────────────────────────────────── */}
       <section aria-labelledby="longform-heading" className="mb-28">
-        <div className="flex items-baseline gap-4 border-b-2 border-on-surface pb-4 mb-2">
-          <Eyebrow>long-form</Eyebrow>
-          <h2
-            id="longform-heading"
-            className="font-headline text-2xl md:text-3xl font-bold tracking-tight"
-          >
-            Essays
-          </h2>
-        </div>
+        <SectionHeader eyebrow="long-form" id="longform-heading">
+          Essays
+        </SectionHeader>
 
         {posts.length === 0 ? (
           <p className="py-10 font-body text-lg text-on-surface-variant italic">
@@ -137,15 +125,9 @@ export default function WritingPage() {
 
       {/* ── 4. Field notes grid ───────────────────────────────────── */}
       <section aria-labelledby="fieldnotes-heading">
-        <div className="flex items-baseline gap-4 border-b-2 border-on-surface pb-4 mb-8">
-          <Eyebrow>field notes</Eyebrow>
-          <h2
-            id="fieldnotes-heading"
-            className="font-headline text-2xl md:text-3xl font-bold tracking-tight"
-          >
-            Field Notes
-          </h2>
-        </div>
+        <SectionHeader eyebrow="field notes" id="fieldnotes-heading">
+          Field Notes
+        </SectionHeader>
 
         <p className="mb-8 max-w-2xl font-body text-lg leading-relaxed text-on-surface-variant">
           Short observations from the trenches — things worth writing down after

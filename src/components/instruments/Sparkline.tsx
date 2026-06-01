@@ -23,7 +23,7 @@ export default function Sparkline({
       className={`w-full h-8 ${className}`}
       aria-hidden="true"
     >
-      <polyline points={coords} fill="none" stroke="currentColor" strokeWidth="2" />
+      <polyline points={coords} fill="none" stroke="currentColor" strokeWidth="2" className="sparkline-draw" />
     </svg>
   );
 }

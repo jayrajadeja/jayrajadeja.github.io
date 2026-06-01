@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import work from "@/data/work.json";
 import experience from "@/data/experience.json";
 import type { WorkCaseFile, ExperienceEntry } from "@/lib/types";
+import Eyebrow from "@/components/Eyebrow";
+import SectionHeader from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
   title: "Selected Systems",
@@ -16,14 +18,6 @@ const Experience = experience as ExperienceEntry[];
 const STACK_UNION = Array.from(
   new Set(CaseFiles.flatMap((c) => c.stack))
 );
-
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="font-mono text-xs uppercase tracking-[0.3em] text-tertiary">
-      {children}
-    </span>
-  );
-}
 
 function formatPeriod(start: string, end: string | null): string {
   const endLabel = end ?? "present";
@@ -51,17 +45,9 @@ export default function WorkPage() {
 
       {/* ── 2. Case files ─────────────────────────────────────────── */}
       <section aria-labelledby="case-files-heading" className="mb-28">
-        <div className="flex items-baseline gap-4 border-b-2 border-on-surface pb-4 mb-2">
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-tertiary">
-            case files
-          </span>
-          <h2
-            id="case-files-heading"
-            className="font-headline text-2xl md:text-3xl font-bold tracking-tight"
-          >
-            What I&rsquo;ve Built
-          </h2>
-        </div>
+        <SectionHeader eyebrow="case files" id="case-files-heading">
+          What I&rsquo;ve Built
+        </SectionHeader>
 
         <ol className="divide-y divide-outline-variant/30">
           {CaseFiles.map((c, i) => (
@@ -127,17 +113,9 @@ export default function WorkPage() {
 
       {/* ── 3. Experience timeline ────────────────────────────────── */}
       <section aria-labelledby="experience-heading" className="mb-28">
-        <div className="flex items-baseline gap-4 border-b-2 border-on-surface pb-4 mb-2">
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-tertiary">
-            experience
-          </span>
-          <h2
-            id="experience-heading"
-            className="font-headline text-2xl md:text-3xl font-bold tracking-tight"
-          >
-            Where I&rsquo;ve Worked
-          </h2>
-        </div>
+        <SectionHeader eyebrow="experience" id="experience-heading">
+          Where I&rsquo;ve Worked
+        </SectionHeader>
 
         <ol className="mt-2">
           {Experience.map((e, i) => (
@@ -185,7 +163,7 @@ export default function WorkPage() {
       </section>
 
       {/* ── 4. Stack & specialties ────────────────────────────────── */}
-      <section aria-labelledby="stack-heading" className="border-t-2 border-on-surface pt-10">
+      <section aria-labelledby="stack-heading" className="border-t border-outline-variant/30 pt-10">
         <div className="flex items-baseline gap-4 mb-6">
           <Eyebrow>stack</Eyebrow>
           <h2

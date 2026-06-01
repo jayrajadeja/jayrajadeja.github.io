@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import nowData from "@/data/now.json";
 import type { NowData } from "@/lib/types";
+import Eyebrow from "@/components/Eyebrow";
 
 export const metadata: Metadata = {
   title: "Now",
@@ -9,14 +10,6 @@ export const metadata: Metadata = {
 };
 
 const now = nowData as NowData;
-
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="font-mono text-xs uppercase tracking-[0.3em] text-tertiary">
-      {children}
-    </span>
-  );
-}
 
 export default function NowPage() {
   return (
@@ -39,7 +32,7 @@ export default function NowPage() {
           A dated snapshot of what&rsquo;s on my plate — the work, the books,
           and the side quests.
         </p>
-        <p className="mt-3 font-body text-base text-on-surface-variant/70">
+        <p className="mt-3 font-body text-base text-on-surface-variant">
           The{" "}
           <a
             href="https://nownownow.com/about"
