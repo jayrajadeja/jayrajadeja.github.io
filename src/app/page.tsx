@@ -48,14 +48,14 @@ export default function HomePage() {
     <div className="pt-32 pb-24 px-8 max-w-5xl mx-auto">
       {/* ── 1. Terminal hero ─────────────────────────────────────── */}
       <section aria-labelledby="hero-lead" className="mb-28">
-        <TerminalBlock title="jayraj@safe:~$">
+        <TerminalBlock title="jayraj@engineering:~$">
           <div className="space-y-1">
             <p>
               <span className="text-tertiary">&gt;</span>{" "}
               <span className="text-on-surface">whoami</span>
             </p>
             <p className="text-on-surface-variant">
-              Jayraj Jadeja — Software Engineer II @ SAFE Security · Bengaluru
+              Jayraj Jadeja — Software Engineer II · Bengaluru
             </p>
             <p className="pt-2">
               <span className="text-tertiary">&gt;</span>{" "}

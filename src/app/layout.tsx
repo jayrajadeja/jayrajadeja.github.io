@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | J. JADEJA",
   },
   description:
-    "Backend & distributed systems engineer at SAFE Security. I take systems apart to see how they tick — Temporal workflows, multi-region data movement, event-driven scaling, and the markets underneath.",
+    "Backend & distributed systems engineer. I take systems apart to see how they tick — Temporal workflows, multi-region data movement, event-driven scaling, and the markets underneath.",
 };
 
 export default function RootLayout({

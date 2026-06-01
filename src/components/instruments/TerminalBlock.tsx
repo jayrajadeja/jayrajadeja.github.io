@@ -1,5 +1,5 @@
 export default function TerminalBlock({
-  title = "jayraj@safe — zsh",
+  title = "jayraj@engineering — zsh",
   children,
 }: {
   title?: string;

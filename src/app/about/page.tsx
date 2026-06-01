@@ -152,7 +152,7 @@ export default function AboutPage() {
 
         <div className="max-w-2xl space-y-6 font-body text-lg md:text-xl leading-relaxed text-on-surface-variant">
           <p>
-            I&rsquo;m a Software Engineer II at SAFE Security, where I work on the
+            I&rsquo;m a Software Engineer II working on the
             backend and full-stack of an enterprise cyber-risk-quantification platform
             — Go services, React/TypeScript frontends, and the distributed systems
             infrastructure that ties them together. My day is mostly MySQL query

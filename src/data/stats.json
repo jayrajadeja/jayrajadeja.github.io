@@ -2,7 +2,7 @@
   "asOf": "2026-06-01",
   "source": "Jira API + GitHub GraphQL, cross-checked against local git",
   "tenureYears": "5+",
-  "domain": "Full-stack engineer on SAFE's enterprise cyber-risk-quantification platform (Go backend + React/TypeScript frontend).",
+  "domain": "Full-stack engineer on an enterprise cyber-risk-quantification platform (Go backend + React/TypeScript frontend).",
   "headline": [
     { "label": "issues delivered", "value": 788 },
     { "label": "issues resolved", "value": 695, "pct": 88 },
