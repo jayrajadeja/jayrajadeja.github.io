@@ -1,6 +1,5 @@
 import CountUp from "@/components/instruments/CountUp";
-import stats from "@/data/stats.json";
-import { statValue } from "@/lib/site";
+import { statValue, stats } from "@/lib/site";
 
 const STATS = [
   { raw: null, textValue: stats.tenureYears, label: "Years Engineering", accent: "text-tertiary" },

@@ -4,8 +4,7 @@ import Sparkline from "@/components/instruments/Sparkline";
 import StatusDot from "@/components/instruments/StatusDot";
 import Eyebrow from "@/components/Eyebrow";
 import SectionHeader from "@/components/SectionHeader";
-import stats from "@/data/stats.json";
-import { RESUME_URL, statValue } from "@/lib/site";
+import { RESUME_URL, statValue, stats } from "@/lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },

@@ -5,10 +5,9 @@ import Metric from "@/components/instruments/Metric";
 import StatusDot from "@/components/instruments/StatusDot";
 import Eyebrow from "@/components/Eyebrow";
 import { getAllPosts } from "@/lib/blog";
-import stats from "@/data/stats.json";
 import work from "@/data/work.json";
 import now from "@/data/now.json";
-import { statValue } from "@/lib/site";
+import { statValue, stats } from "@/lib/site";
 import type { WorkCaseFile, NowData } from "@/lib/types";
 
 const HERO_METRICS = [
