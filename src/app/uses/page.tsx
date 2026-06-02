@@ -4,6 +4,7 @@ import type { UsesData } from "@/lib/types";
 import Eyebrow from "@/components/Eyebrow";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/uses" },
   title: "Uses",
   description:
     "The editors, terminals, languages, data tooling, and AI in the loop behind Jayraj Jadeja's engineering work.",

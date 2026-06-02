@@ -6,6 +6,7 @@ import Eyebrow from "@/components/Eyebrow";
 import SectionHeader from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/work" },
   title: "Selected Systems",
   description:
     "Case files and experience — distributed systems, event-driven architecture, and full-stack engineering.",

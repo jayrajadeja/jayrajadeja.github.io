@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllSlugs, getPostBySlug } from "@/lib/blog";
+import { SITE_URL } from "@/lib/site";
 import { remark } from "remark";
 import html from "remark-html";
 
@@ -17,7 +18,17 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return { title: "Not Found" };
-  return { title: post.title, description: post.excerpt };
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `/writing/${slug}` },
+    openGraph: {
+      url: `${SITE_URL}/writing/${slug}`,
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+    },
+  };
 }
 
 export default async function Page({
@@ -34,6 +45,20 @@ export default async function Page({
 
   return (
     <div className="pt-32 pb-24 px-8 max-w-3xl mx-auto">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.title,
+            description: post.excerpt,
+            datePublished: post.date,
+            author: { "@type": "Person", name: "Jayraj Jadeja", url: SITE_URL },
+            url: `${SITE_URL}/writing/${slug}`,
+          }),
+        }}
+      />
 
       {/* ── back link ─────────────────────────────────────────────── */}
       <Link

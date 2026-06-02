@@ -4,6 +4,7 @@ import type { NowData } from "@/lib/types";
 import Eyebrow from "@/components/Eyebrow";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/now" },
   title: "Now",
   description:
     "A dated snapshot of what Jayraj Jadeja is building, reading, watching, and exploring right now.",

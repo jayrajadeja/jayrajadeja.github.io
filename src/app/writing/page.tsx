@@ -7,6 +7,7 @@ import Eyebrow from "@/components/Eyebrow";
 import SectionHeader from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/writing" },
   title: "The Desk",
   description:
     "Finance × engineering essays and field notes — where order books meet consensus protocols.",

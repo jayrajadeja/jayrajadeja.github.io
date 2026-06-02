@@ -8,6 +8,7 @@ import stats from "@/data/stats.json";
 import { RESUME_URL, statValue } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About",
   description:
     "Bio, education, verified delivery metrics, and how to reach Jayraj Jadeja — backend and distributed-systems engineer.",

@@ -17,6 +17,7 @@ import Eyebrow from "@/components/Eyebrow";
 import SectionHeader from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/interests" },
   title: "Curated Interests",
   description:
     "Formula 1, markets, anime, sport, the shelf, and systems I've studied — the obsessions that run alongside the work.",
