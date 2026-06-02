@@ -19,11 +19,13 @@ export default function CountUp({
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; // keep final value
     const el = ref.current;
     if (!el) return;
+    let cancelled = false;
     const io = new IntersectionObserver((entries) => {
       if (!entries[0].isIntersecting) return;
       io.disconnect();
       const start = performance.now();
       const tick = (now: number) => {
+        if (cancelled) return;
         const t = Math.min(1, (now - start) / durationMs);
         const eased = 1 - Math.pow(1 - t, 3);
         setValue(Math.round(end * eased));
@@ -33,7 +35,7 @@ export default function CountUp({
       requestAnimationFrame(tick);
     }, { threshold: 0.4 });
     io.observe(el);
-    return () => io.disconnect();
+    return () => { cancelled = true; io.disconnect(); };
   }, [end, durationMs]);
 
   return <span ref={ref} className={className}>{format(value)}</span>;
