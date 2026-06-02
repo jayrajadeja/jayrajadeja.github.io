@@ -62,11 +62,17 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-surface text-on-surface min-h-screen flex flex-col selection:bg-primary selection:text-on-primary">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:top-2 focus:left-2 focus:bg-primary focus:text-on-primary focus:px-4 focus:py-2 focus:rounded-sm font-mono text-sm"
+        >
+          Skip to content
+        </a>
         <header className="fixed top-0 inset-x-0 z-50">
           <Navbar />
           <TickerRail />
         </header>
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>

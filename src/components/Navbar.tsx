@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const NAV_LINKS = [
   { href: "/", label: "home" },
@@ -20,6 +20,19 @@ const RESUME_URL =
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -55,6 +68,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           {/* Hamburger — mobile only */}
           <button
+            ref={toggleRef}
             className="md:hidden flex flex-col justify-center items-center gap-1.5 w-8 h-8"
             aria-expanded={open}
             aria-controls="mobile-nav"

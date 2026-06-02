@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --color-primary: #ffb4a8;
@@ -51,7 +52,7 @@
   --color-surface-container-highest: #353534;
   --color-surface-tint: #ffb4a8;
 
-  --color-outline: #8e9192;
+  --color-outline: #9aa0a1;
   --color-outline-variant: #444748;
 
   --color-inverse-surface: #e5e2e1;
@@ -78,6 +79,12 @@ body {
   background-color: var(--color-surface);
   color: var(--color-on-surface);
   font-family: var(--font-body);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-tertiary);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 .material-symbols-outlined {

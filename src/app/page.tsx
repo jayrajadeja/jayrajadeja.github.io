@@ -188,7 +188,7 @@ export default function HomePage() {
           {posts.map((post) => (
             <article key={post.slug} className="py-8">
               <Link href={`/writing/${post.slug}`} className="group block">
-                <time className="font-mono text-xs uppercase tracking-[0.15em] text-outline">
+                <time dateTime={post.date} className="font-mono text-xs uppercase tracking-[0.15em] text-outline">
                   {post.date}
                 </time>
                 <h3 className="mt-2 font-body text-2xl md:text-3xl font-normal leading-snug text-on-surface group-hover:text-tertiary transition-colors">
