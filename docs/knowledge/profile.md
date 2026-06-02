@@ -20,7 +20,7 @@
 Stored as curated data in `src/data/stats.json`. Source: `~/portfolio-export/` (Jira API + GitHub GraphQL, cross-checked against local git).
 - ~5 years; 788 issues delivered (695 resolved, 88%); median cycle time 9 days.
 - 626 pull requests (582 merged, 93%); ~26 PRs/month; ~157 issues/year.
-- 214,956 lines changed (+185,782 / -29,174); 2,682 commits; 4,298 files; 18 repositories.
+- 539,956 lines changed across all repos — GitHub-measured 214,956 (+185,782 / -29,174) plus an earlier Bitbucket repo the Jira+GitHub export couldn't reach; 2,682 commits; 4,298 files; 18 repositories.
 - 6,719 review submissions received; 1,444 discussion comments.
 
 ## Systems I've studied (curiosity, NOT employment)
