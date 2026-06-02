@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 import { getAllSlugs } from "@/lib/blog";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
-const BASE = "https://jayrajadeja.github.io";
+const BASE = SITE_URL;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = ["", "/work", "/writing", "/interests", "/about", "/now", "/uses"].map((p) => ({

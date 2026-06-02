@@ -25,4 +25,4 @@
 ## For agents working on this repository
 - Start with `AGENTS.md` and `docs/knowledge/profile.md` (the single source of truth for facts + honesty rules).
 - Knowledge base: `docs/knowledge/{profile,content-model,design-system,data-pipeline,voice}.md`.
-- Honesty rules: all content is real and interview-defensible; employer (SAFE Security) detail is limited to aggregate metrics + a one-line domain and is named only in the experience entry; the market ticker is labeled `illustrative` until real data is fetched; never fabricate.
+- Honesty rules: all content is real and interview-defensible; employer detail is limited to aggregate metrics + a one-line domain and is named only in the experience entry; the market ticker is labeled `illustrative` until real data is fetched; never fabricate.

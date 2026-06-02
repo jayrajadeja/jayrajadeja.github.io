@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Jayraj Jadeja — Software Engineer",
     description: "Backend & distributed systems engineer. I take systems apart to see how they tick.",
-    url: "https://jayrajadeja.github.io",
+    url: SITE_URL,
     siteName: "Jayraj Jadeja",
     type: "website",
   },
