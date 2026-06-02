@@ -18,15 +18,29 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return { title: "Not Found" };
+  const ogImage = {
+    url: `${SITE_URL}/opengraph-image`,
+    width: 1200,
+    height: 630,
+    alt: post.title,
+  };
   return {
     title: post.title,
     description: post.excerpt,
     alternates: { canonical: `/writing/${slug}` },
     openGraph: {
+      type: "article",
       url: `${SITE_URL}/writing/${slug}`,
       title: post.title,
       description: post.excerpt,
-      type: "article",
+      publishedTime: post.date,
+      images: [ogImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [ogImage.url],
     },
   };
 }
@@ -54,8 +68,11 @@ export default async function Page({
             headline: post.title,
             description: post.excerpt,
             datePublished: post.date,
+            dateModified: post.date,
+            image: [`${SITE_URL}/opengraph-image`],
             author: { "@type": "Person", name: "Jayraj Jadeja", url: SITE_URL },
             url: `${SITE_URL}/writing/${slug}`,
+            mainEntityOfPage: `${SITE_URL}/writing/${slug}`,
           }),
         }}
       />
