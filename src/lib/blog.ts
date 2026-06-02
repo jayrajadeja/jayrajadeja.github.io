@@ -5,6 +5,15 @@ import type { BlogPost } from "./types";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "writing");
 
+/** Sort posts newest-first; missing/invalid dates sort last (NaN-safe, non-mutating). */
+export function sortByDateDesc(posts: BlogPost[]): BlogPost[] {
+  return [...posts].sort((a, b) => {
+    const ta = a.date ? new Date(a.date).getTime() : 0;
+    const tb = b.date ? new Date(b.date).getTime() : 0;
+    return (isNaN(tb) ? 0 : tb) - (isNaN(ta) ? 0 : ta);
+  });
+}
+
 export function getAllPosts(): BlogPost[] {
   const files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".mdx"));
 
@@ -24,11 +33,7 @@ export function getAllPosts(): BlogPost[] {
     };
   });
 
-  return posts.sort((a, b) => {
-    const ta = a.date ? new Date(a.date).getTime() : 0;
-    const tb = b.date ? new Date(b.date).getTime() : 0;
-    return (isNaN(tb) ? 0 : tb) - (isNaN(ta) ? 0 : ta);
-  });
+  return sortByDateDesc(posts);
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {

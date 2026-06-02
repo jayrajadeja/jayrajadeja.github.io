@@ -85,42 +85,44 @@ export default function WritingPage() {
             First essay coming soon.
           </p>
         ) : (
-          <div className="divide-y divide-outline-variant/30">
+          <ul className="divide-y divide-outline-variant/30">
             {posts.map((post) => (
-              <article key={post.slug} className="py-10">
-                <Link href={`/writing/${post.slug}`} className="group block">
-                  {/* date + tags row */}
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-3">
-                    <time dateTime={post.date} className="font-mono text-xs uppercase tracking-[0.15em] text-outline">
-                      {post.date}
-                    </time>
-                    {post.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-mono text-[11px] uppercase tracking-[0.15em] text-tertiary/70"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
+              <li key={post.slug}>
+                <article className="py-10">
+                  <Link href={`/writing/${post.slug}`} className="group block">
+                    {/* date + tags row */}
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-3">
+                      <time dateTime={post.date} className="font-mono text-xs uppercase tracking-[0.15em] text-outline">
+                        {post.date}
+                      </time>
+                      {post.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="font-mono text-[11px] uppercase tracking-[0.15em] text-tertiary/70"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
 
-                  {/* title */}
-                  <h3 className="font-body text-2xl md:text-3xl font-normal leading-snug text-on-surface group-hover:text-tertiary transition-colors">
-                    {post.title}
-                  </h3>
+                    {/* title */}
+                    <h3 className="font-body text-2xl md:text-3xl font-normal leading-snug text-on-surface group-hover:text-tertiary transition-colors">
+                      {post.title}
+                    </h3>
 
-                  {/* excerpt */}
-                  <p className="mt-3 max-w-2xl font-body text-lg leading-relaxed text-on-surface-variant">
-                    {post.excerpt}
-                  </p>
+                    {/* excerpt */}
+                    <p className="mt-3 max-w-2xl font-body text-lg leading-relaxed text-on-surface-variant">
+                      {post.excerpt}
+                    </p>
 
-                  <span className="mt-4 inline-block font-mono text-xs uppercase tracking-[0.2em] text-tertiary">
-                    read &rarr;
-                  </span>
-                </Link>
-              </article>
+                    <span className="mt-4 inline-block font-mono text-xs uppercase tracking-[0.2em] text-tertiary">
+                      read &rarr;
+                    </span>
+                  </Link>
+                </article>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
       </section>
 

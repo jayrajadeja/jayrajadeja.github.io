@@ -39,4 +39,8 @@ describe("parseJolpicaStandingsLeader", () => {
     const json = { MRData: { StandingsTable: { StandingsLists: [{ DriverStandings: [{ points: "10", wins: "0" }] }] } } };
     expect(parseJolpicaStandingsLeader(json)).toBeNull();
   });
+  it("returns null when points/wins are missing or non-numeric (avoids 'null pts')", () => {
+    const json = { MRData: { StandingsTable: { StandingsLists: [{ DriverStandings: [{ wins: "5", Driver: { givenName: "Lewis", familyName: "Hamilton" } }] }] } } };
+    expect(parseJolpicaStandingsLeader(json)).toBeNull();
+  });
 });

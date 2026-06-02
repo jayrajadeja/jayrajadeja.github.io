@@ -19,6 +19,9 @@ export function parseJolpicaLastRace(json) {
 export function parseJolpicaStandingsLeader(json) {
   const s = json?.MRData?.StandingsTable?.StandingsLists?.[0]?.DriverStandings?.[0];
   if (!s || !s.Driver) return null;
+  const points = Number(s.points);
+  const wins = Number(s.wins);
+  if (!Number.isFinite(points) || !Number.isFinite(wins)) return null;
   const cons = s.Constructors?.[s.Constructors.length - 1]?.name ?? null;
-  return { driver: `${s.Driver.givenName} ${s.Driver.familyName}`, points: Number(s.points), wins: Number(s.wins), constructor: cons };
+  return { driver: `${s.Driver.givenName} ${s.Driver.familyName}`, points, wins, constructor: cons };
 }

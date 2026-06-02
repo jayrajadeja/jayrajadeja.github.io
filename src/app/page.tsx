@@ -5,10 +5,9 @@ import Metric from "@/components/instruments/Metric";
 import StatusDot from "@/components/instruments/StatusDot";
 import Eyebrow from "@/components/Eyebrow";
 import { getAllPosts } from "@/lib/blog";
-import stats from "@/data/stats.json";
 import work from "@/data/work.json";
 import now from "@/data/now.json";
-import { statValue } from "@/lib/site";
+import { statValue, stats } from "@/lib/site";
 import type { WorkCaseFile, NowData } from "@/lib/types";
 
 const HERO_METRICS = [
@@ -182,26 +181,28 @@ export default function HomePage() {
           </h2>
         </div>
 
-        <div className="divide-y divide-outline-variant/30">
+        <ul className="divide-y divide-outline-variant/30">
           {posts.map((post) => (
-            <article key={post.slug} className="py-8">
-              <Link href={`/writing/${post.slug}`} className="group block">
-                <time dateTime={post.date} className="font-mono text-xs uppercase tracking-[0.15em] text-outline">
-                  {post.date}
-                </time>
-                <h3 className="mt-2 font-body text-2xl md:text-3xl font-normal leading-snug text-on-surface group-hover:text-tertiary transition-colors">
-                  {post.title}
-                </h3>
-                <p className="mt-3 max-w-2xl font-body text-lg leading-relaxed text-on-surface-variant">
-                  {post.excerpt}
-                </p>
-                <span className="mt-3 inline-block font-mono text-xs uppercase tracking-[0.2em] text-tertiary">
-                  read &rarr;
-                </span>
-              </Link>
-            </article>
+            <li key={post.slug}>
+              <article className="py-8">
+                <Link href={`/writing/${post.slug}`} className="group block">
+                  <time dateTime={post.date} className="font-mono text-xs uppercase tracking-[0.15em] text-outline">
+                    {post.date}
+                  </time>
+                  <h3 className="mt-2 font-body text-2xl md:text-3xl font-normal leading-snug text-on-surface group-hover:text-tertiary transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="mt-3 max-w-2xl font-body text-lg leading-relaxed text-on-surface-variant">
+                    {post.excerpt}
+                  </p>
+                  <span className="mt-3 inline-block font-mono text-xs uppercase tracking-[0.2em] text-tertiary">
+                    read &rarr;
+                  </span>
+                </Link>
+              </article>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <p className="mt-6 font-body text-lg text-on-surface-variant">
           More at the intersection of finance and engineering on{" "}
