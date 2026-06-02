@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { RESUME_URL } from "@/lib/site";
 
 const NAV_LINKS = [
   { href: "/", label: "home" },
@@ -14,12 +15,22 @@ const NAV_LINKS = [
   { href: "/uses", label: "uses" },
 ];
 
-const RESUME_URL =
-  "https://drive.google.com/file/d/1tleUFEbGJ4Se847v0RVS3qQ_4kZL-dS0/view?usp=sharing";
-
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -55,6 +66,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           {/* Hamburger — mobile only */}
           <button
+            ref={toggleRef}
             className="md:hidden flex flex-col justify-center items-center gap-1.5 w-8 h-8"
             aria-expanded={open}
             aria-controls="mobile-nav"

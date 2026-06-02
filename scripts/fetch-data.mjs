@@ -41,14 +41,21 @@ async function fetchF1() {
 async function main() {
   const today = new Date().toISOString().slice(0, 10);
   const marketsPath = `${DATA}/markets.json`;
-  const markets = JSON.parse(readFileSync(marketsPath, "utf8"));
-  const stocks = await fetchStocks();
-  if (stocks) {
-    markets.stocks = stocks;
-    markets.source = "build";
-    markets.asOf = today;
-    writeFileSync(marketsPath, JSON.stringify(markets, null, 2) + "\n");
-    console.log(`[stocks] wrote ${stocks.length} symbols (asOf ${today})`);
+  let markets = null;
+  try {
+    markets = JSON.parse(readFileSync(marketsPath, "utf8"));
+  } catch (e) {
+    console.log(`[stocks] markets.json unreadable (${e.message}) — skipping stocks update`);
+  }
+  if (markets) {
+    const stocks = await fetchStocks();
+    if (stocks) {
+      markets.stocks = stocks;
+      markets.source = "build";
+      markets.asOf = today;
+      writeFileSync(marketsPath, JSON.stringify(markets, null, 2) + "\n");
+      console.log(`[stocks] wrote ${stocks.length} symbols (asOf ${today})`);
+    }
   }
   const f1 = await fetchF1();
   if (f1) {

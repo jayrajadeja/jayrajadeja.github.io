@@ -1,14 +1,12 @@
 import CountUp from "@/components/instruments/CountUp";
 import stats from "@/data/stats.json";
-
-const metric = (label: string): number =>
-  stats.headline.find((h) => h.label === label)?.value ?? 0;
+import { statValue } from "@/lib/site";
 
 const STATS = [
   { raw: null, textValue: stats.tenureYears, label: "Years Engineering", accent: "text-tertiary" },
-  { raw: metric("issues delivered"), label: "Issues Delivered", accent: "text-primary" },
-  { raw: metric("pull requests"), label: "Pull Requests", accent: "text-tertiary" },
-  { raw: metric("lines changed"), label: "Lines Changed", accent: "text-primary" },
+  { raw: statValue("issues delivered"), label: "Issues Delivered", accent: "text-primary" },
+  { raw: statValue("pull requests"), label: "Pull Requests", accent: "text-tertiary" },
+  { raw: statValue("lines changed"), label: "Lines Changed", accent: "text-primary" },
 ];
 
 export default function StatsSection() {

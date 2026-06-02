@@ -24,9 +24,11 @@ export function getAllPosts(): BlogPost[] {
     };
   });
 
-  return posts.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  return posts.sort((a, b) => {
+    const ta = a.date ? new Date(a.date).getTime() : 0;
+    const tb = b.date ? new Date(b.date).getTime() : 0;
+    return (isNaN(tb) ? 0 : tb) - (isNaN(ta) ? 0 : ta);
+  });
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {

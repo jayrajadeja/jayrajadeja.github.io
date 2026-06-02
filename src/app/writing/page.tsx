@@ -7,6 +7,7 @@ import Eyebrow from "@/components/Eyebrow";
 import SectionHeader from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/writing" },
   title: "The Desk",
   description:
     "Finance × engineering essays and field notes — where order books meet consensus protocols.",
@@ -90,7 +91,7 @@ export default function WritingPage() {
                 <Link href={`/writing/${post.slug}`} className="group block">
                   {/* date + tags row */}
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-1 mb-3">
-                    <time className="font-mono text-xs uppercase tracking-[0.15em] text-outline">
+                    <time dateTime={post.date} className="font-mono text-xs uppercase tracking-[0.15em] text-outline">
                       {post.date}
                     </time>
                     {post.tags.map((tag) => (

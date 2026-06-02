@@ -50,7 +50,7 @@ export default function TickerRail() {
           {label}
         </span>
         <div className="overflow-hidden flex-1">
-          <div className="ticker-marquee flex gap-8 py-2 px-4 w-max">
+          <div aria-hidden="true" className="ticker-marquee flex gap-8 py-2 px-4 w-max">
             {group("a")}
             {group("b")}
           </div>
