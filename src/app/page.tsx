@@ -8,25 +8,23 @@ import { getAllPosts } from "@/lib/blog";
 import stats from "@/data/stats.json";
 import work from "@/data/work.json";
 import now from "@/data/now.json";
+import { statValue } from "@/lib/site";
 import type { WorkCaseFile, NowData } from "@/lib/types";
-
-const metric = (label: string): number =>
-  stats.headline.find((h) => h.label === label)?.value ?? 0;
 
 const HERO_METRICS = [
   {
     label: "issues delivered",
-    value: metric("issues delivered").toLocaleString("en-US"),
+    value: statValue("issues delivered").toLocaleString("en-US"),
     accent: "primary" as const,
   },
   {
     label: "PRs merged",
-    value: metric("PRs merged").toLocaleString("en-US"),
+    value: statValue("PRs merged").toLocaleString("en-US"),
     accent: "tertiary" as const,
   },
   {
     label: "lines changed",
-    value: metric("lines changed").toLocaleString("en-US"),
+    value: statValue("lines changed").toLocaleString("en-US"),
     accent: "primary" as const,
   },
 ];

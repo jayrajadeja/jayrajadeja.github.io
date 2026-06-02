@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { RESUME_URL } from "@/lib/site";
 
 const NAV_LINKS = [
   { href: "/", label: "home" },
@@ -13,9 +14,6 @@ const NAV_LINKS = [
   { href: "/now", label: "now" },
   { href: "/uses", label: "uses" },
 ];
-
-const RESUME_URL =
-  "https://drive.google.com/file/d/1tleUFEbGJ4Se847v0RVS3qQ_4kZL-dS0/view?usp=sharing";
 
 export default function Navbar() {
   const pathname = usePathname();

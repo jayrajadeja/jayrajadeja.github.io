@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { statValue } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -19,8 +20,8 @@ export default function OpengraphImage() {
         <div style={{ fontSize: 88, fontWeight: 700, marginTop: 20, letterSpacing: -2 }}>Jayraj Jadeja</div>
         <div style={{ fontSize: 38, color: "#8b9095", marginTop: 14 }}>I take systems apart to see how they tick.</div>
         <div style={{ display: "flex", gap: 36, marginTop: 44, fontSize: 26 }}>
-          <span style={{ color: "#8b9095" }}><span style={{ color: "#4cd6ff" }}>788</span> issues</span>
-          <span style={{ color: "#8b9095" }}><span style={{ color: "#4cd6ff" }}>626</span> PRs</span>
+          <span style={{ color: "#8b9095" }}><span style={{ color: "#4cd6ff" }}>{statValue("issues delivered")}</span> issues</span>
+          <span style={{ color: "#8b9095" }}><span style={{ color: "#4cd6ff" }}>{statValue("pull requests")}</span> PRs</span>
           <span style={{ color: "#ffb4a8" }}>backend · distributed systems</span>
         </div>
       </div>

@@ -5,18 +5,13 @@ import StatusDot from "@/components/instruments/StatusDot";
 import Eyebrow from "@/components/Eyebrow";
 import SectionHeader from "@/components/SectionHeader";
 import stats from "@/data/stats.json";
+import { RESUME_URL, statValue } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
   description:
     "Bio, education, verified delivery metrics, and how to reach Jayraj Jadeja — backend and distributed-systems engineer.",
 };
-
-// ── Helpers ──────────────────────────────────────────────────────────────────
-
-function metricVal(label: string): number {
-  return stats.headline.find((h) => h.label === label)?.value ?? 0;
-}
 
 // ── Data slices ───────────────────────────────────────────────────────────────
 
@@ -25,67 +20,22 @@ const resolvedPct =
 const mergedPct =
   stats.headline.find((h) => h.label === "PRs merged")?.pct ?? 0;
 
-const HEADLINE_METRICS = [
-  {
-    label: "issues delivered",
-    end: metricVal("issues delivered"),
-    unit: undefined,
-    accent: "primary" as const,
-  },
-  {
-    label: `resolved (${resolvedPct}%)`,
-    end: metricVal("issues resolved"),
-    unit: undefined,
-    accent: "primary" as const,
-  },
-  {
-    label: "pull requests",
-    end: metricVal("pull requests"),
-    unit: undefined,
-    accent: "tertiary" as const,
-  },
-  {
-    label: `merged (${mergedPct}%)`,
-    end: metricVal("PRs merged"),
-    unit: undefined,
-    accent: "tertiary" as const,
-  },
-  {
-    label: "lines changed",
-    end: metricVal("lines changed"),
-    unit: undefined,
-    accent: "primary" as const,
-  },
-  {
-    label: "commits",
-    end: metricVal("commits"),
-    unit: undefined,
-    accent: "primary" as const,
-  },
-  {
-    label: "files changed",
-    end: metricVal("files changed"),
-    unit: undefined,
-    accent: "tertiary" as const,
-  },
-  {
-    label: "repositories",
-    end: metricVal("repositories"),
-    unit: undefined,
-    accent: "tertiary" as const,
-  },
-  {
-    label: "review submissions",
-    end: metricVal("review submissions"),
-    unit: undefined,
-    accent: "primary" as const,
-  },
-  {
-    label: "median cycle time",
-    end: metricVal("median cycle time (days)"),
-    unit: " days",
-    accent: "tertiary" as const,
-  },
+const HEADLINE_METRICS: {
+  label: string;
+  end: number;
+  unit?: string;
+  accent: "primary" | "tertiary";
+}[] = [
+  { label: "issues delivered", end: statValue("issues delivered"), accent: "primary" },
+  { label: `resolved (${resolvedPct}%)`, end: statValue("issues resolved"), accent: "primary" },
+  { label: "pull requests", end: statValue("pull requests"), accent: "tertiary" },
+  { label: `merged (${mergedPct}%)`, end: statValue("PRs merged"), accent: "tertiary" },
+  { label: "lines changed", end: statValue("lines changed"), accent: "primary" },
+  { label: "commits", end: statValue("commits"), accent: "primary" },
+  { label: "files changed", end: statValue("files changed"), accent: "tertiary" },
+  { label: "repositories", end: statValue("repositories"), accent: "tertiary" },
+  { label: "review submissions", end: statValue("review submissions"), accent: "primary" },
+  { label: "median cycle time", end: statValue("median cycle time (days)"), unit: " days", accent: "tertiary" },
 ];
 
 // Bar width as a percentage of the max count in issuesByType
@@ -355,7 +305,7 @@ export default function AboutPage() {
         {/* Primary actions */}
         <div className="mt-8 flex flex-wrap gap-4">
           <a
-            href="https://drive.google.com/file/d/1tleUFEbGJ4Se847v0RVS3qQ_4kZL-dS0/view?usp=sharing"
+            href={RESUME_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] bg-primary text-on-primary px-5 py-2.5 rounded-md hover:bg-primary/90 transition-colors"

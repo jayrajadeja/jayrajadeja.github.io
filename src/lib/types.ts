@@ -88,3 +88,15 @@ export interface F1Data {
   lastRace: { round: number; season: string; name: string; date: string; winner: string | null } | null;
   leader: { driver: string; points: number; wins: number; constructor: string | null } | null;
 }
+
+export interface StatsJson {
+  asOf: string;
+  source: string;
+  tenureYears: string;
+  domain: string;
+  headline: { label: string; value: number; pct?: number }[];
+  cadence: { issuesPerYear: number; prsPerMonth: number };
+  issuesByYear: { year: number; created: number; resolved: number }[];
+  prsByYear: { year: number; created: number; merged: number }[];
+  issuesByType: { type: string; count: number }[];
+}
