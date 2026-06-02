@@ -34,7 +34,16 @@ export default function TickerRail() {
   const stocks: Quote[] = markets.stocks.map((s) => ({ symbol: s.symbol, changePct: s.changePct }));
   const items = [...stocks, ...crypto];
   const stocksReal = markets.source === "build";
-  const label = cryptoLive || stocksReal ? `markets · as of ${markets.asOf}` : "markets · illustrative";
+  const label = stocksReal
+    ? `markets · as of ${markets.asOf}`
+    : cryptoLive
+      ? "markets · crypto live · stocks illustrative"
+      : "markets · illustrative";
+  const ariaLabel = stocksReal
+    ? `Market ticker, data as of ${markets.asOf}`
+    : cryptoLive
+      ? "Market ticker, crypto live and stock data illustrative"
+      : "Market ticker, illustrative sample data";
 
   const group = (prefix: string) =>
     items.map((m) => <TickerChip key={`${prefix}-${m.symbol}`} symbol={m.symbol} changePct={m.changePct} />);
@@ -42,7 +51,7 @@ export default function TickerRail() {
   return (
     <div
       className="border-b border-outline-variant/20 bg-surface-container-low/70 backdrop-blur-md"
-      aria-label={cryptoLive ? "Market ticker — crypto live, stocks/F1 as of last build" : "Market ticker — sample data"}
+      aria-label={ariaLabel}
     >
       <div className="flex items-stretch">
         <span className="shrink-0 flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-outline/80 px-3 border-r border-outline-variant/20">
