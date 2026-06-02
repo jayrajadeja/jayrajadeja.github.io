@@ -7,7 +7,7 @@ import Eyebrow from "@/components/Eyebrow";
 import { getAllPosts } from "@/lib/blog";
 import work from "@/data/work.json";
 import now from "@/data/now.json";
-import { statValue, stats } from "@/lib/site";
+import { RESUME_URL, statValue, stats } from "@/lib/site";
 import type { WorkCaseFile, NowData } from "@/lib/types";
 
 const HERO_METRICS = [
@@ -80,6 +80,12 @@ export default function HomePage() {
         <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.15em] text-outline">
           Delivery telemetry · Jira + GitHub · 2021–2026
         </p>
+        <Link
+          href="/about"
+          className="mt-2 inline-block font-mono text-[11px] uppercase tracking-[0.15em] text-tertiary hover:text-on-surface transition-colors"
+        >
+          See the full record &rarr;
+        </Link>
 
         {/* serif lead — the editorial spine */}
         <div className="mt-12 border-t border-outline-variant/40 pt-10">
@@ -104,6 +110,33 @@ export default function HomePage() {
             </a>
             .
           </p>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] bg-primary text-on-primary px-5 py-2.5 rounded-md hover:bg-tertiary transition-colors"
+            >
+              <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">description</span>
+              Résumé
+            </a>
+            <a
+              href="mailto:jayrajsinh.jadeja399@gmail.com?subject=Hello%20Jayraj"
+              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
+            >
+              <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">mail</span>
+              Email
+            </a>
+            <a
+              href="https://www.linkedin.com/in/jayrajadeja/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
+            >
+              <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">work</span>
+              LinkedIn
+            </a>
+          </div>
         </div>
       </section>
 
@@ -270,23 +303,44 @@ export default function HomePage() {
         >
           Let&rsquo;s build the next system.
         </h2>
-        <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-sm uppercase tracking-[0.15em]">
+        <p className="mt-4 max-w-2xl font-body text-lg leading-relaxed text-on-surface-variant">
+          Open to backend &amp; distributed-systems roles. Pull the résumé or
+          reach out directly — no gatekeeping.
+        </p>
+        <div className="mt-6 flex flex-wrap items-center gap-4">
           <a
-            href="mailto:jayrajsinh.jadeja399@gmail.com"
-            className="text-on-surface hover:text-tertiary transition-colors"
+            href={RESUME_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] bg-primary text-on-primary px-5 py-2.5 rounded-md hover:bg-tertiary transition-colors"
           >
-            get in touch &rarr;
+            <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">description</span>
+            Résumé
           </a>
-          <span aria-hidden="true" className="text-outline-variant">
-            /
-          </span>
+          <a
+            href="mailto:jayrajsinh.jadeja399@gmail.com?subject=Hello%20Jayraj"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
+          >
+            <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">mail</span>
+            Email
+          </a>
+          <a
+            href="https://www.linkedin.com/in/jayrajadeja/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
+          >
+            <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">work</span>
+            LinkedIn
+          </a>
           <a
             href="https://github.com/jayrajadeja"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-on-surface hover:text-tertiary transition-colors"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
           >
-            GitHub &rarr;
+            <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">code</span>
+            GitHub
           </a>
         </div>
       </section>
