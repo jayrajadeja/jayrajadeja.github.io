@@ -8,7 +8,7 @@
     { "label": "issues resolved", "value": 695, "pct": 88 },
     { "label": "pull requests", "value": 626 },
     { "label": "PRs merged", "value": 582, "pct": 93 },
-    { "label": "lines changed", "value": 214956 },
+    { "label": "lines changed", "value": 539956 },
     { "label": "commits", "value": 2682 },
     { "label": "files changed", "value": 4298 },
     { "label": "repositories", "value": 18 },
