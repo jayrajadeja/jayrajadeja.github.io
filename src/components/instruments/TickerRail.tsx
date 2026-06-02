@@ -7,6 +7,8 @@ import TickerChip from "./TickerChip";
 type Quote = { symbol: string; changePct: number };
 
 const CRYPTO_IDS: Record<string, string> = { bitcoin: "BTC", ethereum: "ETH" };
+const CRYPTO_CACHE_KEY = "ticker-crypto-v1";
+const CRYPTO_TTL_MS = 90_000;
 
 export default function TickerRail() {
   const bakedCrypto: Quote[] = markets.crypto.map((c) => ({ symbol: c.symbol, changePct: c.changePct }));
@@ -15,6 +17,25 @@ export default function TickerRail() {
 
   useEffect(() => {
     let cancelled = false;
+    const apply = (live: Quote[]) => {
+      if (cancelled || !live.length) return;
+      setCrypto(live);
+      setCryptoLive(true);
+    };
+
+    // Serve a recent cached result first — avoids re-hitting CoinGecko's
+    // keyless (rate-limited) endpoint on every navigation within the tab.
+    try {
+      const raw = sessionStorage.getItem(CRYPTO_CACHE_KEY);
+      if (raw) {
+        const cached = JSON.parse(raw) as { t: number; data: Quote[] };
+        if (cached && Date.now() - cached.t < CRYPTO_TTL_MS && Array.isArray(cached.data)) {
+          apply(cached.data);
+          return () => { cancelled = true; };
+        }
+      }
+    } catch { /* ignore a malformed cache entry */ }
+
     fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true")
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
       .then((j) => {
@@ -25,7 +46,12 @@ export default function TickerRail() {
             return typeof ch === "number" ? { symbol, changePct: Number(ch.toFixed(2)) } : null;
           })
           .filter((x): x is Quote => x !== null);
-        if (live.length) { setCrypto(live); setCryptoLive(true); }
+        if (live.length) {
+          apply(live);
+          try {
+            sessionStorage.setItem(CRYPTO_CACHE_KEY, JSON.stringify({ t: Date.now(), data: live }));
+          } catch { /* ignore storage quota / disabled */ }
+        }
       })
       .catch(() => { /* keep baked fallback */ });
     return () => { cancelled = true; };
