@@ -114,23 +114,23 @@ export default function AboutPage() {
         </SectionHeader>
 
         {/* 3a. Headline metric grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-8 gap-y-8 mb-12">
+        <dl className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-8 gap-y-8 mb-12">
           {HEADLINE_METRICS.map((m) => {
             const color =
               m.accent === "tertiary" ? "text-tertiary" : "text-primary";
             return (
               <div key={m.label}>
-                <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-outline">
+                <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-outline">
                   {m.label}
-                </div>
-                <div className={`font-mono text-2xl font-bold ${color}`}>
+                </dt>
+                <dd className={`font-mono text-2xl font-bold ${color}`}>
                   <CountUp end={m.end} />
                   {m.unit && <span className="text-sm">{m.unit}</span>}
-                </div>
+                </dd>
               </div>
             );
           })}
-        </div>
+        </dl>
 
         {/* 3b. Year-over-year sparklines */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
