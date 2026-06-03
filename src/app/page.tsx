@@ -10,6 +10,8 @@ import now from "@/data/now.json";
 import { RESUME_URL, statValue, stats } from "@/lib/site";
 import type { WorkCaseFile, NowData } from "@/lib/types";
 
+const mergeRate = stats.headline.find((h) => h.label === "PRs merged")?.pct ?? 0;
+
 const HERO_METRICS = [
   {
     label: "issues delivered",
@@ -17,13 +19,13 @@ const HERO_METRICS = [
     accent: "primary" as const,
   },
   {
-    label: "PRs merged",
-    value: statValue("PRs merged").toLocaleString("en-US"),
+    label: "PR merge rate",
+    value: `${mergeRate}%`,
     accent: "tertiary" as const,
   },
   {
-    label: "lines changed",
-    value: statValue("lines changed").toLocaleString("en-US"),
+    label: "median cycle time",
+    value: `${statValue("median cycle time (days)")} days`,
     accent: "primary" as const,
   },
 ];
