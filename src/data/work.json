@@ -4,21 +4,36 @@
     "title": "CISO Digest — AI threat-intel agent",
     "summary": "An AI agent that ingests security threat feeds and quantifies their business impact into prioritized, executive-ready insights.",
     "stack": ["AI / LLM", "Go", "event-driven"],
-    "tags": ["AI", "security", "automation"]
+    "tags": ["AI", "security", "automation"],
+    "problem": "Security leaders drown in generic threat intelligence — feeds that aren't correlated with their own asset exposure, so the real priorities get lost to alert fatigue.",
+    "approach": "An autonomous LLM agent calls tools to pull threat events and correlate them against the org's own exposure, then emits a structured briefing. The key move: the model writes the prose and rates the context dimensions, but severity is computed deterministically in code — a weighted score with guardrail auto-escalation — never by the model. I rejected letting the LLM emit severity directly (LLMs are inconsistent scorers) and a separate orchestrator service (a high-maintenance second code path).",
+    "hardPart": "LLMs drift. Under token pressure the model silently dropped events, and free-text fields came back in inconsistent casing. I fixed it with a lenient (non-enum) schema, an event-count self-check with bounded retries, and explicit mapping rules — keeping the stochastic part small and contained.",
+    "outcome": "A daily, org-contextualized executive briefing with explainable, deterministic severity — delivered through an async pipeline (scheduled, queued, consumed, stored), with one prompt-and-scoring core shared by a batch path and a conversational one.",
+    "role": "Authored the design; own the scoring model and prompt-hardening."
   },
   {
     "id": "workflow-as-a-service",
     "title": "Workflow-as-a-Service on Temporal",
     "summary": "Durable, event-driven workflow orchestration on Temporal — composable flows with retries, timers, and human-in-the-loop steps at platform scale.",
     "stack": ["Go", "Temporal", "event-driven"],
-    "tags": ["distributed-systems", "workflows"]
+    "tags": ["distributed-systems", "workflows"],
+    "problem": "Platform automations were hardcoded per-feature flags — not user-authored, not versioned, not observable. The platform needed one governed engine to design, run, and manage workflows.",
+    "approach": "A 'workflow-as-code' engine: workflows are authored on a visual canvas, stored as a versioned JSON DSL, and executed as a single durable Temporal workflow that interprets the DSL — every action node bottoms out in one generic authenticated-HTTP activity, so the interpreter itself is the abstraction. Temporal won over custom DB-polling (fragile; no durable timers or retries) and a cloud step-function product (vendor-coupled, costly, poor SDK fit).",
+    "hardPart": "The sharp edges came from production: scheduled runs starved user-triggered ones until the work was split across priority task queues; an action-to-event-to-self-retrigger loop took down a demo until workflow-chain context was propagated to skip self-matching triggers; copy-on-write versioning keeps in-flight runs pinned to their own snapshot; and bounded-concurrency fan-out made per-item steps roughly 5x faster than sequential.",
+    "outcome": "Hardcoded automations became user-authored, versioned, observable workflows — with durable retries and timers as a platform guarantee.",
+    "role": "Core contributor; designed and own the generic HTTP-request node."
   },
   {
     "id": "multi-region-data",
     "title": "Multi-region, cross-stack data movement",
-    "summary": "Moving data reliably across regions and heterogeneous stacks — consistency, backpressure, and failure handling under real throughput.",
-    "stack": ["Go", "MySQL", "messaging"],
-    "tags": ["distributed-systems", "data"]
+    "summary": "A consented, one-way data exchange that lets one tenant pull another's security posture across separate cloud accounts and regions.",
+    "stack": ["Go", "AWS", "DynamoDB"],
+    "tags": ["distributed-systems", "data"],
+    "problem": "Customers needed deep posture data on third parties that were themselves tenants of the same platform — but every tenant is isolated in its own cloud account and region, with no standardized, consented way to move data across those boundaries.",
+    "approach": "A consented, one-way exchange: the source builds versioned point-in-time snapshots, writes them to its own object storage, copies them cross-account and cross-region into the requestor's storage, and the requestor ingests them. Consent is an explicit, status-gated contract between the two tenants — only accepted contracts ever sync. I chose this async snapshot file-drop over the original design — a live cross-tenant API pull with magic-link consent and per-tenant credentials — which meant credential sprawl and synchronous cross-region calls.",
+    "hardPart": "Trusting another account's data safely: cross-account access uses role assumption guarded by a deterministic per-account external ID to close the confused-deputy hole; snapshots are immutable and versioned ('snapshot, then act' over reading live state mid-flight); and user and audit fields are stripped before anything crosses the tenant boundary.",
+    "outcome": "A secure, consented, auditable cross-tenant sharing path that didn't exist before — one-way, snapshot-versioned, and isolated per account and region.",
+    "role": "Designed and built it end-to-end."
   },
   {
     "id": "event-driven-scaling",

@@ -79,6 +79,37 @@ export default function WorkPage() {
                   {c.summary}
                 </p>
 
+                {/* depth: problem → approach → hard part → outcome */}
+                {(c.problem || c.approach || c.hardPart || c.outcome) && (
+                  <dl className="mt-6 space-y-4 max-w-2xl border-l border-outline-variant/30 pl-5">
+                    {(
+                      [
+                        ["problem", c.problem],
+                        ["approach", c.approach],
+                        ["hard part", c.hardPart],
+                        ["outcome", c.outcome],
+                      ] as [string, string | undefined][]
+                    ).map(([label, value]) =>
+                      value ? (
+                        <div key={label}>
+                          <dt className="font-mono text-[11px] uppercase tracking-[0.2em] text-tertiary">
+                            {label}
+                          </dt>
+                          <dd className="mt-1 font-body text-base md:text-lg leading-relaxed text-on-surface-variant">
+                            {value}
+                          </dd>
+                        </div>
+                      ) : null,
+                    )}
+                  </dl>
+                )}
+
+                {c.role && (
+                  <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.15em] text-on-surface-variant">
+                    <span className="text-primary">role ·</span> {c.role}
+                  </p>
+                )}
+
                 {/* stack chips */}
                 <ul
                   className="mt-5 flex flex-wrap gap-2"
