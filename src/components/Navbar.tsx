@@ -11,8 +11,6 @@ const NAV_LINKS = [
   { href: "/writing", label: "writing" },
   { href: "/interests", label: "interests" },
   { href: "/about", label: "about" },
-  { href: "/now", label: "now" },
-  { href: "/uses", label: "uses" },
 ];
 
 export default function Navbar() {

@@ -61,10 +61,10 @@ export default function TickerRail() {
   const items = [...stocks, ...crypto];
   const stocksReal = markets.source === "build";
   const label = stocksReal
-    ? `markets · as of ${markets.asOf}`
+    ? `markets i read · as of ${markets.asOf}`
     : cryptoLive
-      ? "markets · crypto live · stocks illustrative"
-      : "markets · illustrative";
+      ? "markets i read · crypto live · stocks illustrative"
+      : "markets i read · illustrative";
   const ariaLabel = stocksReal
     ? `Market ticker, data as of ${markets.asOf}`
     : cryptoLive
