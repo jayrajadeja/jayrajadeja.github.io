@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import work from "@/data/work.json";
 import experience from "@/data/experience.json";
-import type { WorkCaseFile, ExperienceEntry } from "@/lib/types";
+import systems from "@/data/systems.json";
+import type { WorkCaseFile, ExperienceEntry, StudiedSystem } from "@/lib/types";
 import Eyebrow from "@/components/Eyebrow";
 import SectionHeader from "@/components/SectionHeader";
 
@@ -14,6 +16,7 @@ export const metadata: Metadata = {
 
 const CaseFiles = work as WorkCaseFile[];
 const Experience = experience as ExperienceEntry[];
+const Flagship = (systems as StudiedSystem[]).filter((s) => s.flagship);
 
 // Derive stack union from all case files, deduped + ordered
 const STACK_UNION = Array.from(
@@ -40,7 +43,8 @@ export default function WorkPage() {
         </h1>
         <p className="mt-6 max-w-2xl font-body text-xl md:text-2xl italic leading-relaxed text-on-surface-variant">
           Five years of backend and distributed-systems engineering — the work
-          that shipped.
+          that shipped, plus the large-scale systems I take apart to sharpen the
+          same instincts.
         </p>
       </section>
 
@@ -112,7 +116,43 @@ export default function WorkPage() {
         </ol>
       </section>
 
-      {/* ── 3. Experience timeline ────────────────────────────────── */}
+      {/* ── 3. Systems I take apart (studied, not shipped) ────────── */}
+      <section aria-labelledby="studied-heading" className="mb-28">
+        <SectionHeader eyebrow="studied, not shipped" id="studied-heading">
+          Systems I Take Apart
+        </SectionHeader>
+        <p className="mb-8 max-w-2xl font-body text-lg leading-relaxed text-on-surface-variant">
+          The design problems I dig into on my own time — how the big systems
+          actually work. Studied, not shipped; the same lens I bring to the work
+          above.
+        </p>
+        <ul
+          className="grid grid-cols-1 md:grid-cols-2 gap-5"
+          aria-label="Systems studied"
+        >
+          {Flagship.map((s) => (
+            <li
+              key={s.id}
+              className="border border-outline-variant/40 rounded-lg p-6 bg-surface-container-low"
+            >
+              <h3 className="font-headline text-lg font-bold tracking-tight text-on-surface">
+                {s.system}
+              </h3>
+              <p className="mt-2 font-body text-base leading-relaxed text-on-surface-variant">
+                {s.note}
+              </p>
+            </li>
+          ))}
+        </ul>
+        <Link
+          href="/interests"
+          className="mt-6 inline-block font-mono text-xs uppercase tracking-[0.2em] text-tertiary hover:text-on-surface transition-colors"
+        >
+          More systems I&rsquo;ve studied &rarr;
+        </Link>
+      </section>
+
+      {/* ── 4. Experience timeline ────────────────────────────────── */}
       <section aria-labelledby="experience-heading" className="mb-28">
         <SectionHeader eyebrow="experience" id="experience-heading">
           Where I&rsquo;ve Worked
@@ -163,7 +203,7 @@ export default function WorkPage() {
         </ol>
       </section>
 
-      {/* ── 4. Stack & specialties ────────────────────────────────── */}
+      {/* ── 5. Stack & specialties ────────────────────────────────── */}
       <section aria-labelledby="stack-heading" className="border-t border-outline-variant/30 pt-10">
         <div className="flex items-baseline gap-4 mb-6">
           <Eyebrow>stack</Eyebrow>

@@ -56,6 +56,14 @@ export default function HomePage() {
             </p>
             <p className="pt-2">
               <span className="text-tertiary">&gt;</span>{" "}
+              <span className="text-on-surface">cat thesis.txt</span>
+            </p>
+            <p className="text-on-surface-variant">
+              markets &amp; distributed systems — the same problems in different
+              clothes
+            </p>
+            <p className="pt-2">
+              <span className="text-tertiary">&gt;</span>{" "}
               <span className="text-on-surface">./status</span>
             </p>
             <p className="text-on-surface-variant">
@@ -97,9 +105,9 @@ export default function HomePage() {
             see how they tick.<span className="text-primary">&rdquo;</span>
           </h1>
           <p className="mt-6 max-w-2xl font-body text-lg md:text-xl leading-relaxed text-on-surface-variant">
-            Backend and distributed-systems engineer tuning the hot paths of a
-            cyber-risk platform — and writing about where high-performance
-            engineering meets market fundamentals on{" "}
+            Backend and distributed-systems engineer who reads markets and
+            consensus protocols through the same lens — tuning the hot paths of a
+            cyber-risk platform, and writing finance × engineering on{" "}
             <a
               href="https://substack.com/@jayrajadeja"
               target="_blank"

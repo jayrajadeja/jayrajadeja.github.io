@@ -26,24 +26,24 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "JAYRAJ JADEJA | Software Engineer",
+    default: "Jayraj Jadeja — Backend & Distributed Systems · Finance × Engineering",
     template: "%s | J. JADEJA",
   },
   description:
-    "Backend & distributed systems engineer. I take systems apart to see how they tick — Temporal workflows, multi-region data movement, event-driven scaling, and the markets underneath.",
+    "Backend and distributed-systems engineer who reads markets and distributed systems through the same lens — Temporal workflows, multi-region data movement, event-driven scaling, and the market structure underneath.",
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Jayraj Jadeja — Software Engineer",
-    description: "Backend & distributed systems engineer. I take systems apart to see how they tick.",
+    title: "Jayraj Jadeja — Backend & Distributed Systems · Finance × Engineering",
+    description: "Backend and distributed-systems engineer who reads markets and distributed systems through the same lens.",
     url: SITE_URL,
     siteName: "Jayraj Jadeja",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jayraj Jadeja — Software Engineer",
-    description: "Backend & distributed systems engineer. I take systems apart to see how they tick.",
+    title: "Jayraj Jadeja — Backend & Distributed Systems · Finance × Engineering",
+    description: "Backend and distributed-systems engineer who reads markets and distributed systems through the same lens.",
   },
 };
 
