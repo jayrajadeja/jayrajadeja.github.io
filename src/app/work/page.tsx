@@ -104,12 +104,6 @@ export default function WorkPage() {
                   </dl>
                 )}
 
-                {c.role && (
-                  <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.15em] text-on-surface-variant">
-                    <span className="text-primary">role ·</span> {c.role}
-                  </p>
-                )}
-
                 {/* stack chips */}
                 <ul
                   className="mt-5 flex flex-wrap gap-2"
