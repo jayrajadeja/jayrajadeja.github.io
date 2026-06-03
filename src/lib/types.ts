@@ -30,6 +30,11 @@ export interface WorkCaseFile {
   summary: string;
   stack: string[];
   tags: string[];
+  problem?: string;
+  approach?: string;
+  hardPart?: string;
+  outcome?: string;
+  role?: string;
 }
 
 export interface ExperienceEntry {
