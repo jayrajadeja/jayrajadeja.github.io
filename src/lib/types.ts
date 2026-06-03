@@ -34,7 +34,6 @@ export interface WorkCaseFile {
   approach?: string;
   hardPart?: string;
   outcome?: string;
-  role?: string;
 }
 
 export interface ExperienceEntry {
