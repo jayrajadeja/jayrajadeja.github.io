@@ -3,7 +3,8 @@ import CountUp from "@/components/instruments/CountUp";
 import Sparkline from "@/components/instruments/Sparkline";
 import StatusDot from "@/components/instruments/StatusDot";
 import Eyebrow from "@/components/Eyebrow";
-import Icon from "@/components/Icon";
+import Icon, { type IconName } from "@/components/Icon";
+import CtaLink from "@/components/CtaLink";
 import SectionHeader from "@/components/SectionHeader";
 import { RESUME_URL, statValue, stats } from "@/lib/site";
 
@@ -305,43 +306,39 @@ export default function AboutPage() {
 
         {/* Primary actions */}
         <div className="mt-8 flex flex-wrap gap-4">
-          <a
-            href={RESUME_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] bg-primary text-on-primary px-5 py-2.5 rounded-md hover:bg-primary/90 transition-colors"
-          >
-            <Icon name="description" className="text-base" />
+          <CtaLink href={RESUME_URL} icon="description">
             View Résumé
-          </a>
-          <a
+          </CtaLink>
+          <CtaLink
             href="mailto:jayrajsinh.jadeja399@gmail.com"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
+            variant="secondary"
+            icon="mail"
           >
-            <Icon name="mail" className="text-base" />
             Email me
-          </a>
+          </CtaLink>
         </div>
 
         {/* Secondary links */}
         <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
-          {[
-            {
-              label: "GitHub",
-              href: "https://github.com/jayrajadeja",
-              icon: "code",
-            },
-            {
-              label: "LinkedIn",
-              href: "https://www.linkedin.com/in/jayrajadeja/",
-              icon: "work",
-            },
-            {
-              label: "Substack",
-              href: "https://substack.com/@jayrajadeja",
-              icon: "edit_note",
-            },
-          ].map(({ label, href, icon }) => (
+          {(
+            [
+              {
+                label: "GitHub",
+                href: "https://github.com/jayrajadeja",
+                icon: "code",
+              },
+              {
+                label: "LinkedIn",
+                href: "https://www.linkedin.com/in/jayrajadeja/",
+                icon: "work",
+              },
+              {
+                label: "Substack",
+                href: "https://substack.com/@jayrajadeja",
+                icon: "edit_note",
+              },
+            ] satisfies { label: string; href: string; icon: IconName }[]
+          ).map(({ label, href, icon }) => (
             <a
               key={label}
               href={href}

@@ -51,11 +51,13 @@ const PATHS: Record<string, ReactNode> = {
   ),
 };
 
+export type IconName = keyof typeof PATHS;
+
 export default function Icon({
   name,
   className = "",
 }: {
-  name: string;
+  name: IconName;
   className?: string;
 }) {
   const path = PATHS[name];

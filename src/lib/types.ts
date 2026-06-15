@@ -86,6 +86,20 @@ export interface UsesData {
   sections: { title: string; items: string[] }[];
 }
 
+export interface MarketQuote {
+  symbol: string;
+  price: number;
+  changePct: number;
+}
+
+export interface MarketsJson {
+  asOf: string;
+  source: "seed" | "build";
+  note?: string;
+  stocks: MarketQuote[];
+  crypto: MarketQuote[];
+}
+
 export interface F1Data {
   asOf: string;
   source: string;

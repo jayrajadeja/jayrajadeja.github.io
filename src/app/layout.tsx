@@ -33,6 +33,16 @@ export const metadata: Metadata = {
     "Backend and distributed-systems engineer who reads markets and distributed systems through the same lens — Temporal workflows, multi-region data movement, event-driven scaling, and the market structure underneath.",
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: "/" },
+  // Declared explicitly because setting `icons` overrides Next's file-based
+  // auto-detection wholesale. favicon.ico moved to public/ so its size is
+  // stated accurately here (Next mis-inferred 256x256 from the .ico bytes).
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "16x16 32x32", type: "image/x-icon" },
+    ],
+    apple: { url: "/apple-icon", sizes: "180x180", type: "image/png" },
+  },
   openGraph: {
     title: "Jayraj Jadeja — Backend & Distributed Systems · Finance × Engineering",
     description: "Backend and distributed-systems engineer who reads markets and distributed systems through the same lens.",
@@ -72,6 +82,7 @@ export default function RootLayout({
               "@graph": [
                 {
                   "@type": "Person",
+                  "@id": `${SITE_URL}/#person`,
                   name: "Jayraj Jadeja",
                   url: SITE_URL,
                   jobTitle: "Software Engineer",
@@ -81,7 +92,13 @@ export default function RootLayout({
                     "https://substack.com/@jayrajadeja",
                   ],
                 },
-                { "@type": "WebSite", name: "Jayraj Jadeja", url: SITE_URL },
+                {
+                  "@type": "WebSite",
+                  "@id": `${SITE_URL}/#website`,
+                  name: "Jayraj Jadeja",
+                  url: SITE_URL,
+                  publisher: { "@id": `${SITE_URL}/#person` },
+                },
               ],
             }),
           }}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Eyebrow from "@/components/Eyebrow";
+import CtaLink from "@/components/CtaLink";
 import TerminalBlock from "@/components/instruments/TerminalBlock";
 
 export const metadata: Metadata = {
@@ -38,24 +38,13 @@ export default function NotFound() {
       </div>
 
       <div className="mt-10 flex flex-wrap gap-4">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] bg-primary text-on-primary px-5 py-2.5 rounded-md hover:bg-tertiary transition-colors"
-        >
-          Back home
-        </Link>
-        <Link
-          href="/work"
-          className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
-        >
+        <CtaLink href="/">Back home</CtaLink>
+        <CtaLink href="/work" variant="secondary">
           See the work
-        </Link>
-        <Link
-          href="/writing"
-          className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
-        >
+        </CtaLink>
+        <CtaLink href="/writing" variant="secondary">
           Read the desk
-        </Link>
+        </CtaLink>
       </div>
     </div>
   );

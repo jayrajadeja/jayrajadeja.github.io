@@ -1,10 +1,11 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { formatGrouped } from "@/lib/format";
 
 export default function CountUp({
   end,
   durationMs = 1200,
-  format = (n: number) => n.toLocaleString("en-US"),
+  format = formatGrouped,
   className,
 }: {
   end: number;

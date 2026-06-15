@@ -106,7 +106,7 @@ Defined in `src/app/globals.css`:
 
 **`.sparkline-draw`** — SVG stroke-dashoffset draw-in animation over 0.9s ease-out. Only active under `prefers-reduced-motion: no-preference`; omitted otherwise (line remains static at full visibility).
 
-**Material Symbols** — Icons via Google Fonts CDN (`material-symbols-outlined`). Weight 300, fill 0, opsz 24.
+**Icons** — Inline SVG via the `Icon` component (`src/components/Icon.tsx`), not an icon font. Stroke-based, 24×24 viewBox, sized in `em` and colored with `currentColor` so each icon inherits the surrounding text size and color. Only the glyphs actually used are bundled (`name` is a union of those keys); add a path to `PATHS` to introduce a new one. (Replaced the former Material Symbols Google-Fonts CDN dependency — no render-blocking icon-font request.)
 
 ---
 
