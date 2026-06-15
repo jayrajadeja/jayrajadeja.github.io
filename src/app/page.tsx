@@ -4,11 +4,12 @@ import TerminalBlock from "@/components/instruments/TerminalBlock";
 import Metric from "@/components/instruments/Metric";
 import StatusDot from "@/components/instruments/StatusDot";
 import Eyebrow from "@/components/Eyebrow";
-import Icon from "@/components/Icon";
+import CtaLink from "@/components/CtaLink";
 import { getAllPosts } from "@/lib/blog";
 import work from "@/data/work.json";
 import now from "@/data/now.json";
 import { RESUME_URL, statValue, stats } from "@/lib/site";
+import { formatGrouped } from "@/lib/format";
 import type { WorkCaseFile, NowData } from "@/lib/types";
 
 const mergeRate = stats.headline.find((h) => h.label === "PRs merged")?.pct ?? 0;
@@ -16,7 +17,7 @@ const mergeRate = stats.headline.find((h) => h.label === "PRs merged")?.pct ?? 0
 const HERO_METRICS = [
   {
     label: "issues delivered",
-    value: statValue("issues delivered").toLocaleString("en-US"),
+    value: formatGrouped(statValue("issues delivered")),
     accent: "primary" as const,
   },
   {
@@ -122,31 +123,23 @@ export default function HomePage() {
             .
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href={RESUME_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] bg-primary text-on-primary px-5 py-2.5 rounded-md hover:bg-tertiary transition-colors"
-            >
-              <Icon name="description" className="text-base" />
+            <CtaLink href={RESUME_URL} icon="description">
               Résumé
-            </a>
-            <a
+            </CtaLink>
+            <CtaLink
               href="mailto:jayrajsinh.jadeja399@gmail.com?subject=Hello%20Jayraj"
-              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
+              variant="secondary"
+              icon="mail"
             >
-              <Icon name="mail" className="text-base" />
               Email
-            </a>
-            <a
+            </CtaLink>
+            <CtaLink
               href="https://www.linkedin.com/in/jayrajadeja/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
+              variant="secondary"
+              icon="work"
             >
-              <Icon name="work" className="text-base" />
               LinkedIn
-            </a>
+            </CtaLink>
           </div>
         </div>
       </section>
@@ -319,40 +312,30 @@ export default function HomePage() {
           reach out directly — no gatekeeping.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-4">
-          <a
-            href={RESUME_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] bg-primary text-on-primary px-5 py-2.5 rounded-md hover:bg-tertiary transition-colors"
-          >
-            <Icon name="description" className="text-base" />
+          <CtaLink href={RESUME_URL} icon="description">
             Résumé
-          </a>
-          <a
+          </CtaLink>
+          <CtaLink
             href="mailto:jayrajsinh.jadeja399@gmail.com?subject=Hello%20Jayraj"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
+            variant="secondary"
+            icon="mail"
           >
-            <Icon name="mail" className="text-base" />
             Email
-          </a>
-          <a
+          </CtaLink>
+          <CtaLink
             href="https://www.linkedin.com/in/jayrajadeja/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
+            variant="secondary"
+            icon="work"
           >
-            <Icon name="work" className="text-base" />
             LinkedIn
-          </a>
-          <a
+          </CtaLink>
+          <CtaLink
             href="https://github.com/jayrajadeja"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
+            variant="secondary"
+            icon="code"
           >
-            <Icon name="code" className="text-base" />
             GitHub
-          </a>
+          </CtaLink>
         </div>
       </section>
     </div>

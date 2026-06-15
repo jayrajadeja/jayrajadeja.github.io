@@ -66,11 +66,8 @@ export default async function Page({
                 datePublished: post.date,
                 dateModified: post.date,
                 image: [`${SITE_URL}/writing/${slug}/opengraph-image`],
-                author: {
-                  "@type": "Person",
-                  name: "Jayraj Jadeja",
-                  url: SITE_URL,
-                },
+                author: { "@id": `${SITE_URL}/#person` },
+                publisher: { "@id": `${SITE_URL}/#person` },
                 url: `${SITE_URL}/writing/${slug}`,
                 mainEntityOfPage: `${SITE_URL}/writing/${slug}`,
               },

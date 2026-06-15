@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import markets from "@/data/markets.json";
+import marketsRaw from "@/data/markets.json";
+import type { MarketsJson } from "@/lib/types";
 import TickerChip from "./TickerChip";
+
+const markets = marketsRaw as MarketsJson;
 
 type Quote = { symbol: string; changePct: number };
 
@@ -80,7 +83,7 @@ export default function TickerRail() {
       aria-label={ariaLabel}
     >
       <div className="flex items-stretch">
-        <span className="shrink-0 flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-outline/80 px-3 border-r border-outline-variant/20">
+        <span className="shrink-0 flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-outline px-3 border-r border-outline-variant/20">
           <span className={`w-1 h-1 rounded-full ${cryptoLive ? "bg-up" : "bg-outline/60"}`} aria-hidden="true" />
           {label}
         </span>
