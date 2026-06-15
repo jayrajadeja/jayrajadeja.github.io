@@ -4,6 +4,7 @@ import TerminalBlock from "@/components/instruments/TerminalBlock";
 import Metric from "@/components/instruments/Metric";
 import StatusDot from "@/components/instruments/StatusDot";
 import Eyebrow from "@/components/Eyebrow";
+import Icon from "@/components/Icon";
 import { getAllPosts } from "@/lib/blog";
 import work from "@/data/work.json";
 import now from "@/data/now.json";
@@ -127,14 +128,14 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] bg-primary text-on-primary px-5 py-2.5 rounded-md hover:bg-tertiary transition-colors"
             >
-              <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">description</span>
+              <Icon name="description" className="text-base" />
               Résumé
             </a>
             <a
               href="mailto:jayrajsinh.jadeja399@gmail.com?subject=Hello%20Jayraj"
               className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
             >
-              <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">mail</span>
+              <Icon name="mail" className="text-base" />
               Email
             </a>
             <a
@@ -143,7 +144,7 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
             >
-              <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">work</span>
+              <Icon name="work" className="text-base" />
               LinkedIn
             </a>
           </div>
@@ -324,14 +325,14 @@ export default function HomePage() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] bg-primary text-on-primary px-5 py-2.5 rounded-md hover:bg-tertiary transition-colors"
           >
-            <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">description</span>
+            <Icon name="description" className="text-base" />
             Résumé
           </a>
           <a
             href="mailto:jayrajsinh.jadeja399@gmail.com?subject=Hello%20Jayraj"
             className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
           >
-            <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">mail</span>
+            <Icon name="mail" className="text-base" />
             Email
           </a>
           <a
@@ -340,7 +341,7 @@ export default function HomePage() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
           >
-            <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">work</span>
+            <Icon name="work" className="text-base" />
             LinkedIn
           </a>
           <a
@@ -349,7 +350,7 @@ export default function HomePage() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
           >
-            <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">code</span>
+            <Icon name="code" className="text-base" />
             GitHub
           </a>
         </div>

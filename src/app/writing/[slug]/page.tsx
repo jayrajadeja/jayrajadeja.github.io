@@ -18,12 +18,8 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return { title: "Not Found" };
-  const ogImage = {
-    url: `${SITE_URL}/opengraph-image`,
-    width: 1200,
-    height: 630,
-    alt: post.title,
-  };
+  // The colocated opengraph-image.tsx auto-populates og:image (and Twitter
+  // falls back to it), so no manual `images` entry is needed here.
   return {
     title: post.title,
     description: post.excerpt,
@@ -34,13 +30,11 @@ export async function generateMetadata({
       title: post.title,
       description: post.excerpt,
       publishedTime: post.date,
-      images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.excerpt,
-      images: [ogImage.url],
     },
   };
 }
@@ -64,26 +58,75 @@ export default async function Page({
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.title,
-            description: post.excerpt,
-            datePublished: post.date,
-            dateModified: post.date,
-            image: [`${SITE_URL}/opengraph-image`],
-            author: { "@type": "Person", name: "Jayraj Jadeja", url: SITE_URL },
-            url: `${SITE_URL}/writing/${slug}`,
-            mainEntityOfPage: `${SITE_URL}/writing/${slug}`,
+            "@graph": [
+              {
+                "@type": "BlogPosting",
+                headline: post.title,
+                description: post.excerpt,
+                datePublished: post.date,
+                dateModified: post.date,
+                image: [`${SITE_URL}/writing/${slug}/opengraph-image`],
+                author: {
+                  "@type": "Person",
+                  name: "Jayraj Jadeja",
+                  url: SITE_URL,
+                },
+                url: `${SITE_URL}/writing/${slug}`,
+                mainEntityOfPage: `${SITE_URL}/writing/${slug}`,
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Writing",
+                    item: `${SITE_URL}/writing`,
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: post.title,
+                    item: `${SITE_URL}/writing/${slug}`,
+                  },
+                ],
+              },
+            ],
           }),
         }}
       />
 
-      {/* ── back link ─────────────────────────────────────────────── */}
-      <Link
-        href="/writing"
-        className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-on-surface-variant hover:text-tertiary transition-colors mb-12"
+      {/* ── breadcrumb ────────────────────────────────────────────── */}
+      <nav
+        aria-label="Breadcrumb"
+        className="mb-12 font-mono text-xs uppercase tracking-[0.2em] text-on-surface-variant"
       >
-        &larr; Back to the desk
-      </Link>
+        <ol className="flex flex-wrap items-center gap-2">
+          <li>
+            <Link href="/" className="hover:text-tertiary transition-colors">
+              Home
+            </Link>
+          </li>
+          <li aria-hidden="true" className="text-outline">
+            /
+          </li>
+          <li>
+            <Link
+              href="/writing"
+              className="hover:text-tertiary transition-colors"
+            >
+              Writing
+            </Link>
+          </li>
+          <li aria-hidden="true" className="text-outline">
+            /
+          </li>
+          <li className="text-tertiary/70 normal-case tracking-normal truncate max-w-[60vw]">
+            {post.title}
+          </li>
+        </ol>
+      </nav>
 
       {/* ── post header ───────────────────────────────────────────── */}
       <header className="mb-12 border-b border-outline-variant/40 pb-10">

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { sortByDateDesc } from "@/lib/blog";
+import { sortByDateDesc, buildPost } from "@/lib/blog";
 import type { BlogPost } from "@/lib/types";
 
 const post = (slug: string, date: string): BlogPost => ({
@@ -38,5 +38,50 @@ describe("sortByDateDesc", () => {
     const before = input.map((p) => p.slug);
     sortByDateDesc(input);
     expect(input.map((p) => p.slug)).toEqual(before);
+  });
+});
+
+describe("buildPost", () => {
+  const valid = `---
+title: "Test Post"
+date: "2026-01-01"
+tags: ["a", "b"]
+excerpt: "A short excerpt."
+---
+
+Body content here.`;
+
+  it("parses valid frontmatter into a typed post", () => {
+    const p = buildPost("test-post", valid);
+    expect(p).toMatchObject({
+      slug: "test-post",
+      title: "Test Post",
+      date: "2026-01-01",
+      tags: ["a", "b"],
+      excerpt: "A short excerpt.",
+    });
+    expect(p.content.trim()).toBe("Body content here.");
+  });
+
+  it("throws naming the missing field when title is absent", () => {
+    const noTitle = `---\ndate: "2026-01-01"\n---\nBody`;
+    expect(() => buildPost("broken", noTitle)).toThrowError(/broken\.mdx.*title/);
+  });
+
+  it("throws when date is absent", () => {
+    const noDate = `---\ntitle: "X"\n---\nBody`;
+    expect(() => buildPost("nodate", noDate)).toThrowError(/date/);
+  });
+
+  it("defaults optional tags and excerpt to safe values", () => {
+    const minimal = `---\ntitle: "X"\ndate: "2026-01-01"\n---\nBody`;
+    const p = buildPost("minimal", minimal);
+    expect(p.tags).toEqual([]);
+    expect(p.excerpt).toBe("");
+  });
+
+  it("normalizes an unquoted YAML date to an ISO date string", () => {
+    const dateObj = `---\ntitle: "X"\ndate: 2026-01-01\n---\nBody`;
+    expect(buildPost("d", dateObj).date).toBe("2026-01-01");
   });
 });

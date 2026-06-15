@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Icon from "@/components/Icon";
 import interestsRaw from "@/data/interests.json";
 import animeRaw from "@/data/anime.json";
 import booksRaw from "@/data/books.json";
@@ -183,9 +184,21 @@ export default function InterestsPage() {
           Sport
         </SectionHeader>
 
-        <p className="max-w-2xl font-body text-xl md:text-2xl italic leading-relaxed text-on-surface-variant">
+        <p className="max-w-2xl font-body text-xl md:text-2xl italic leading-relaxed text-on-surface-variant mb-6">
           {interests.sport.note}
         </p>
+
+        {/* Sports I play */}
+        <ul className="flex flex-wrap gap-2" aria-label="Sports I play">
+          {interests.sport.play.map((s) => (
+            <li
+              key={s}
+              className="font-mono text-sm uppercase tracking-[0.1em] text-on-surface-variant border border-outline-variant/40 rounded-md px-3 py-1.5"
+            >
+              {s}
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* ── 6. The shelf — books + papers ────────────────────────── */}
@@ -272,9 +285,7 @@ export default function InterestsPage() {
                     aria-label={`Read ${paper.title} (opens in new tab)`}
                   >
                     read paper
-                    <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">
-                      north_east
-                    </span>
+                    <Icon name="north_east" className="text-base" />
                   </a>
                 </div>
               </li>
