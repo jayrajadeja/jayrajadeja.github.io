@@ -3,6 +3,7 @@ import CountUp from "@/components/instruments/CountUp";
 import Sparkline from "@/components/instruments/Sparkline";
 import StatusDot from "@/components/instruments/StatusDot";
 import Eyebrow from "@/components/Eyebrow";
+import Icon from "@/components/Icon";
 import SectionHeader from "@/components/SectionHeader";
 import { RESUME_URL, statValue, stats } from "@/lib/site";
 
@@ -310,18 +311,14 @@ export default function AboutPage() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] bg-primary text-on-primary px-5 py-2.5 rounded-md hover:bg-primary/90 transition-colors"
           >
-            <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">
-              description
-            </span>
+            <Icon name="description" className="text-base" />
             View Résumé
           </a>
           <a
             href="mailto:jayrajsinh.jadeja399@gmail.com"
             className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] border border-outline-variant/60 text-on-surface px-5 py-2.5 rounded-md hover:border-tertiary hover:text-tertiary transition-colors"
           >
-            <span className="material-symbols-outlined text-base leading-none" aria-hidden="true">
-              mail
-            </span>
+            <Icon name="mail" className="text-base" />
             Email me
           </a>
         </div>
@@ -352,12 +349,7 @@ export default function AboutPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-mono text-sm uppercase tracking-[0.15em] text-on-surface-variant hover:text-tertiary transition-colors"
             >
-              <span
-                className="material-symbols-outlined text-base leading-none"
-                aria-hidden="true"
-              >
-                {icon}
-              </span>
+              <Icon name={icon} className="text-base" />
               {label}
               <span aria-hidden="true">&rarr;</span>
             </a>

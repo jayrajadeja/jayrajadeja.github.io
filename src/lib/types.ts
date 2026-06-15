@@ -70,7 +70,7 @@ export interface FieldNote {
 export interface InterestsData {
   f1: { favoriteTeam: string; favoriteDrivers: string[]; note: string };
   markets: { note: string; focus: string[] };
-  sport: { note: string };
+  sport: { note: string; play: string[] };
 }
 
 export interface NowData {

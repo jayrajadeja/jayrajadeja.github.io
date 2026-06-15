@@ -5,6 +5,40 @@ import type { BlogPost } from "./types";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "writing");
 
+/**
+ * Parse + validate one post's raw file contents into a typed BlogPost.
+ * Throws (failing the build) when required frontmatter is missing so a
+ * malformed post is caught at build time rather than silently rendering blank.
+ * Pure — takes the raw string, so it is unit-testable without the filesystem.
+ */
+export function buildPost(slug: string, fileContents: string): BlogPost {
+  const { data, content } = matter(fileContents);
+
+  const title = typeof data.title === "string" ? data.title.trim() : "";
+  const date =
+    data.date instanceof Date
+      ? data.date.toISOString().slice(0, 10)
+      : String(data.date ?? "").trim();
+
+  const missing: string[] = [];
+  if (!title) missing.push("title");
+  if (!date) missing.push("date");
+  if (missing.length > 0) {
+    throw new Error(
+      `content/writing/${slug}.mdx is missing required frontmatter: ${missing.join(", ")}`,
+    );
+  }
+
+  return {
+    slug,
+    title,
+    date,
+    tags: Array.isArray(data.tags) ? data.tags : [],
+    excerpt: typeof data.excerpt === "string" ? data.excerpt : "",
+    content,
+  };
+}
+
 /** Sort posts newest-first; missing/invalid dates sort last (NaN-safe, non-mutating). */
 export function sortByDateDesc(posts: BlogPost[]): BlogPost[] {
   return [...posts].sort((a, b) => {
@@ -19,18 +53,8 @@ export function getAllPosts(): BlogPost[] {
 
   const posts = files.map((filename) => {
     const slug = filename.replace(/\.mdx$/, "");
-    const filePath = path.join(BLOG_DIR, filename);
-    const fileContents = fs.readFileSync(filePath, "utf-8");
-    const { data, content } = matter(fileContents);
-
-    return {
-      slug,
-      title: data.title ?? "",
-      date: data.date ?? "",
-      tags: data.tags ?? [],
-      excerpt: data.excerpt ?? "",
-      content,
-    };
+    const fileContents = fs.readFileSync(path.join(BLOG_DIR, filename), "utf-8");
+    return buildPost(slug, fileContents);
   });
 
   return sortByDateDesc(posts);
@@ -43,17 +67,7 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
     return undefined;
   }
 
-  const fileContents = fs.readFileSync(filePath, "utf-8");
-  const { data, content } = matter(fileContents);
-
-  return {
-    slug,
-    title: data.title ?? "",
-    date: data.date ?? "",
-    tags: data.tags ?? [],
-    excerpt: data.excerpt ?? "",
-    content,
-  };
+  return buildPost(slug, fs.readFileSync(filePath, "utf-8"));
 }
 
 export function getAllSlugs(): string[] {

@@ -4,5 +4,6 @@
   { "id": "s3", "system": "Amazon S3", "note": "The durability math and the metadata/index layer behind object storage at scale." },
   { "id": "uber", "system": "Uber dispatch", "note": "Geospatial sharding and real-time supply/demand matching." },
   { "id": "dropbox", "system": "Dropbox / Drive sync", "note": "Block-level sync, dedup, and conflict resolution." },
-  { "id": "instagram", "system": "Instagram feed", "note": "Fan-out-on-write vs read, and the cost of celebrity accounts." }
+  { "id": "instagram", "system": "Instagram feed", "note": "Fan-out-on-write vs read, and the cost of celebrity accounts." },
+  { "id": "google-docs", "system": "Google Docs collaboration", "note": "Real-time collaborative editing — operational transforms vs CRDTs, and how concurrent edits converge to one consistent document." }
 ]
