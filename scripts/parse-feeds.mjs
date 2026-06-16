@@ -25,3 +25,43 @@ export function parseJolpicaStandingsLeader(json) {
   const cons = s.Constructors?.[s.Constructors.length - 1]?.name ?? null;
   return { driver: `${s.Driver.givenName} ${s.Driver.familyName}`, points, wins, constructor: cons };
 }
+
+/** Top-N driver standings; skips entries with missing driver or non-numeric points/wins. */
+export function parseJolpicaStandings(json, limit = 5) {
+  const list = json?.MRData?.StandingsTable?.StandingsLists?.[0]?.DriverStandings;
+  if (!Array.isArray(list)) return [];
+  return list
+    .slice(0, limit)
+    .map((s, i) => {
+      if (!s || !s.Driver) return null;
+      const points = Number(s.points);
+      const wins = Number(s.wins);
+      if (!Number.isFinite(points) || !Number.isFinite(wins)) return null;
+      const cons = s.Constructors?.[s.Constructors.length - 1]?.name ?? null;
+      return {
+        pos: Number(s.position) || i + 1,
+        driver: `${s.Driver.givenName} ${s.Driver.familyName}`,
+        points,
+        wins,
+        constructor: cons,
+      };
+    })
+    .filter(Boolean);
+}
+
+/** Next/upcoming race for the current season, or null if none (e.g. season over). */
+export function parseJolpicaNextRace(json) {
+  const race = json?.MRData?.RaceTable?.Races?.[0];
+  if (!race || !race.raceName || !race.date) return null;
+  const loc = race.Circuit?.Location;
+  return {
+    round: Number(race.round),
+    season: race.season,
+    name: race.raceName,
+    date: race.date,
+    time: race.time ?? null,
+    circuit: race.Circuit?.circuitName ?? null,
+    locality: loc?.locality ?? null,
+    country: loc?.country ?? null,
+  };
+}

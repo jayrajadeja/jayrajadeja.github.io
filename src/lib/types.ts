@@ -100,11 +100,30 @@ export interface MarketsJson {
   crypto: MarketQuote[];
 }
 
+export interface F1Standing {
+  pos: number;
+  driver: string;
+  points: number;
+  wins: number;
+  constructor: string | null;
+}
+
 export interface F1Data {
   asOf: string;
   source: string;
   lastRace: { round: number; season: string; name: string; date: string; winner: string | null } | null;
   leader: { driver: string; points: number; wins: number; constructor: string | null } | null;
+  standings?: F1Standing[];
+  nextRace?: {
+    round: number;
+    season: string;
+    name: string;
+    date: string;
+    time: string | null;
+    circuit: string | null;
+    locality: string | null;
+    country: string | null;
+  } | null;
 }
 
 export interface StatsJson {

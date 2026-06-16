@@ -6,6 +6,9 @@ import TerminalBlock from "@/components/instruments/TerminalBlock";
 export const metadata: Metadata = {
   title: "404 — Not Found",
   description: "This route doesn't resolve.",
+  // Don't inherit the site's "/" canonical on the error page. `canonical: null`
+  // unsets it. (Next already emits noindex for not-found, so no robots needed.)
+  alternates: { canonical: null },
 };
 
 export default function NotFound() {

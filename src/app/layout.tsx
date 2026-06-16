@@ -26,13 +26,17 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Jayraj Jadeja — Backend & Distributed Systems · Finance × Engineering",
+    // Kept ≲60 chars so Google doesn't truncate the SERP title.
+    default: "Jayraj Jadeja — Backend & Distributed Systems",
     template: "%s | J. JADEJA",
   },
   description:
     "Backend and distributed-systems engineer who reads markets and distributed systems through the same lens — Temporal workflows, multi-region data movement, event-driven scaling, and the market structure underneath.",
   metadataBase: new URL(SITE_URL),
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    types: { "application/rss+xml": `${SITE_URL}/feed.xml` },
+  },
   // Declared explicitly because setting `icons` overrides Next's file-based
   // auto-detection wholesale. favicon.ico moved to public/ so its size is
   // stated accurately here (Next mis-inferred 256x256 from the .ico bytes).

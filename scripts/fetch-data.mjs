@@ -1,6 +1,12 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { parseFinnhubQuote, parseJolpicaLastRace, parseJolpicaStandingsLeader } from "./parse-feeds.mjs";
+import {
+  parseFinnhubQuote,
+  parseJolpicaLastRace,
+  parseJolpicaStandingsLeader,
+  parseJolpicaStandings,
+  parseJolpicaNextRace,
+} from "./parse-feeds.mjs";
 
 const DATA = resolve("src/data");
 const STOCK_SYMBOLS = ["NVDA", "AAPL", "TSLA", "MSFT"];
@@ -27,14 +33,18 @@ async function fetchStocks() {
 
 async function fetchF1() {
   try {
-    const [last, standings] = await Promise.all([
+    const [last, standings, next] = await Promise.all([
       getJson("https://api.jolpi.ca/ergast/f1/current/last/results.json"),
       getJson("https://api.jolpi.ca/ergast/f1/current/driverStandings.json"),
+      // The season may be over → no next race. Don't fail the whole fetch for it.
+      getJson("https://api.jolpi.ca/ergast/f1/current/next.json").catch(() => null),
     ]);
     const lastRace = parseJolpicaLastRace(last);
     const leader = parseJolpicaStandingsLeader(standings);
-    if (!lastRace && !leader) return null;
-    return { asOf: new Date().toISOString().slice(0, 10), source: "build", lastRace, leader };
+    const table = parseJolpicaStandings(standings, 5);
+    const nextRace = next ? parseJolpicaNextRace(next) : null;
+    if (!lastRace && !leader && table.length === 0) return null;
+    return { asOf: new Date().toISOString().slice(0, 10), source: "build", lastRace, leader, standings: table, nextRace };
   } catch (e) { console.log(`[f1] ${e.message}`); return null; }
 }
 

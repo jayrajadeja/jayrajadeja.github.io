@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllSlugs, getPostBySlug } from "@/lib/blog";
+import { getAllSlugs, getPostBySlug, getAllPosts } from "@/lib/blog";
 import { SITE_URL } from "@/lib/site";
 import { remark } from "remark";
 import html from "remark-html";
@@ -47,6 +47,12 @@ export default async function Page({
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) notFound();
+
+  // Sibling posts for prev/next nav (getAllPosts is newest-first).
+  const all = getAllPosts();
+  const idx = all.findIndex((p) => p.slug === slug);
+  const newer = idx > 0 ? all[idx - 1] : null;
+  const older = idx >= 0 && idx < all.length - 1 ? all[idx + 1] : null;
 
   const processed = await remark().use(html).process(post.content);
   const contentHtml = processed.toString();
@@ -183,6 +189,38 @@ export default async function Page({
         >
           &larr; Back to the desk
         </Link>
+
+        {(older || newer) && (
+          <nav
+            aria-label="More posts"
+            className="mt-8 grid grid-cols-2 gap-4 border-t border-outline-variant/40 pt-8"
+          >
+            <div>
+              {older && (
+                <Link href={`/writing/${older.slug}`} className="group block">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-outline">
+                    &larr; Older
+                  </span>
+                  <span className="mt-1 block font-body text-on-surface-variant group-hover:text-tertiary transition-colors">
+                    {older.title}
+                  </span>
+                </Link>
+              )}
+            </div>
+            <div className="text-right">
+              {newer && (
+                <Link href={`/writing/${newer.slug}`} className="group block">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-outline">
+                    Newer &rarr;
+                  </span>
+                  <span className="mt-1 block font-body text-on-surface-variant group-hover:text-tertiary transition-colors">
+                    {newer.title}
+                  </span>
+                </Link>
+              )}
+            </div>
+          </nav>
+        )}
       </footer>
     </div>
   );
