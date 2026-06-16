@@ -1,16 +1,5 @@
 [
   {
-    "id": "ciso-digest",
-    "title": "CISO Digest — AI threat-intel agent",
-    "summary": "An AI agent that ingests security threat feeds and quantifies their business impact into prioritized, executive-ready insights.",
-    "stack": ["AI / LLM", "Go", "event-driven"],
-    "tags": ["AI", "security", "automation"],
-    "problem": "Security leaders drown in generic threat intelligence — feeds that aren't correlated with their own asset exposure, so the real priorities get lost to alert fatigue.",
-    "approach": "An autonomous LLM agent calls tools to pull threat events and correlate them against the org's own exposure, then emits a structured briefing. The key move: the model writes the prose and rates the context dimensions, but severity is computed deterministically in code — a weighted score with guardrail auto-escalation — never by the model. I rejected letting the LLM emit severity directly (LLMs are inconsistent scorers) and a separate orchestrator service (a high-maintenance second code path).",
-    "hardPart": "LLMs drift. Under token pressure the model silently dropped events, and free-text fields came back in inconsistent casing. I fixed it with a lenient (non-enum) schema, an event-count self-check with bounded retries, and explicit mapping rules — keeping the stochastic part small and contained.",
-    "outcome": "A daily, org-contextualized executive briefing with explainable, deterministic severity — delivered through an async pipeline (scheduled, queued, consumed, stored), with one prompt-and-scoring core shared by a batch path and a conversational one."
-  },
-  {
     "id": "workflow-as-a-service",
     "title": "Workflow-as-a-Service on Temporal",
     "summary": "Durable, event-driven workflow orchestration on Temporal — composable flows with retries, timers, and human-in-the-loop steps at platform scale.",
@@ -31,6 +20,28 @@
     "approach": "A consented, one-way exchange: the source builds versioned point-in-time snapshots, writes them to its own object storage, copies them cross-account and cross-region into the requestor's storage, and the requestor ingests them. Consent is an explicit, status-gated contract between the two tenants — only accepted contracts ever sync. I chose this async snapshot file-drop over the original design — a live cross-tenant API pull with magic-link consent and per-tenant credentials — which meant credential sprawl and synchronous cross-region calls.",
     "hardPart": "Trusting another account's data safely: cross-account access uses role assumption guarded by a deterministic per-account external ID to close the confused-deputy hole; snapshots are immutable and versioned ('snapshot, then act' over reading live state mid-flight); and user and audit fields are stripped before anything crosses the tenant boundary.",
     "outcome": "A secure, consented, auditable cross-tenant sharing path that didn't exist before — one-way, snapshot-versioned, and isolated per account and region."
+  },
+  {
+    "id": "vendor-interaction",
+    "title": "AI-Reviewed Vendor Assessment Workflow",
+    "summary": "An event-driven workflow that lets external vendors complete security questionnaires through scoped, passwordless access, with an AI agent that reviews submissions and flags weak answers for analysts.",
+    "stack": ["Go", "AI / LLM", "event-driven"],
+    "tags": ["AI", "workflows", "security"],
+    "problem": "Third-party security assessments were manual and slow — vendors filled long questionnaires while analysts chased follow-ups and hand-flagged risky answers, creating bottlenecks and human error. Opening the flow to external responders safely also meant authorization had to be scoped per-request rather than org-wide, so an outside user only ever sees their own assessment.",
+    "approach": "Each assessment request gets its own immutable profile snapshot, so responses stay segregated, auditable, and copied into the live record only on approval. A server-enforced state machine (open → in-progress → submitted → re-opened → completed/overdue) gates every transition by role — a responder can submit, only an analyst can approve or re-open. External vendors get a narrowly scoped role plus a time-limited, email-validated magic link that exposes only responder-safe endpoints instead of the internal APIs. Services coordinate over an event bus, with an orchestrator driving the snapshot store, notifications, and an evidence/comments service. A deliberate trade-off: per-request access rules live in the workflow services, not the central auth layer, because they evolve far faster than the auth model.",
+    "hardPart": "The AI reviewer and the vendor form a feedback loop — the agent flags answers and re-opens the assessment, the vendor resubmits, the agent runs again — which can loop forever. I helped design the controls that bound it: a hard iteration cap tracked in Redis, a per-question escalation/exception so a contested item can opt out of further AI review, and a two-step LLM call (classify the control, then evaluate) whose structured output drives deterministic bulk-flagging. Event handling is idempotent and pushes heavy work downstream, so a re-delivered event neither double-flags nor stalls the consumer.",
+    "outcome": "Turned a manual, multi-round assessment cycle into a self-serve workflow safe to open to external vendors — AI triage flags weak answers and comments automatically, so analysts review by exception instead of reading every response."
+  },
+  {
+    "id": "ciso-digest",
+    "title": "CISO Digest — AI threat-intel agent",
+    "summary": "An AI agent that ingests security threat feeds and quantifies their business impact into prioritized, executive-ready insights.",
+    "stack": ["AI / LLM", "Go", "event-driven"],
+    "tags": ["AI", "security", "automation"],
+    "problem": "Security leaders drown in generic threat intelligence — feeds that aren't correlated with their own asset exposure, so the real priorities get lost to alert fatigue.",
+    "approach": "An autonomous LLM agent calls tools to pull threat events and correlate them against the org's own exposure, then emits a structured briefing. The key move: the model writes the prose and rates the context dimensions, but severity is computed deterministically in code — a weighted score with guardrail auto-escalation — never by the model. I rejected letting the LLM emit severity directly (LLMs are inconsistent scorers) and a separate orchestrator service (a high-maintenance second code path).",
+    "hardPart": "LLMs drift. Under token pressure the model silently dropped events, and free-text fields came back in inconsistent casing. I fixed it with a lenient (non-enum) schema, an event-count self-check with bounded retries, and explicit mapping rules — keeping the stochastic part small and contained.",
+    "outcome": "A daily, org-contextualized executive briefing with explainable, deterministic severity — delivered through an async pipeline (scheduled, queued, consumed, stored), with one prompt-and-scoring core shared by a batch path and a conversational one."
   },
   {
     "id": "event-driven-scaling",
