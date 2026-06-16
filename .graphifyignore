@@ -1,0 +1,37 @@
+# Graphify scan excludes — keeps the knowledge graph CODE-ONLY, so it builds
+# fully locally (tree-sitter AST) with no LLM backend / API key / data egress.
+#
+# NOTE: when this file exists, graphify uses it INSTEAD of .gitignore for this
+# directory, so the build/dependency excludes below are repeated from .gitignore
+# on purpose (otherwise node_modules etc. would be scanned).
+
+# build output & dependencies
+node_modules/
+.next/
+out/
+build/
+coverage/
+.git/
+graphify-out/
+.vercel/
+.superpowers/
+*.tsbuildinfo
+
+# docs, prose & images — excluded so the corpus needs no semantic (LLM) pass.
+# Mirrors graphify's DOC_EXTENSIONS (.md .mdx .qmd .txt .rst .html .yaml .yml).
+*.md
+*.mdx
+*.qmd
+*.txt
+*.rst
+*.html
+*.yaml
+*.yml
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.webp
+*.ico
+*.pdf
