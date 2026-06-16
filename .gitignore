@@ -45,3 +45,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# graphify — commit the queryable graph (graph.json), report, viz, manifest;
+# ignore local-only intermediates / caches.
+graphify-out/cache/
+graphify-out/cost.json
+graphify-out/.graphify_analysis.json
+graphify-out/.graphify_labels.json
