@@ -7,16 +7,17 @@ export const dynamic = "force-static";
 const BASE = SITE_URL;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  // No lastModified on static pages: a build-time `new Date()` changes on every
+  // deploy regardless of content, so it's noise to crawlers. Posts carry their
+  // real publish date from frontmatter.
   const pages = ["", "/work", "/writing", "/interests", "/about", "/now", "/uses"].map((p) => ({
     url: `${BASE}${p}`,
-    lastModified,
     changeFrequency: "monthly" as const,
     priority: p === "" ? 1 : 0.8,
   }));
   const posts = getAllPosts().map((post) => ({
     url: `${BASE}/writing/${post.slug}`,
-    lastModified: post.date ? new Date(post.date) : lastModified,
+    lastModified: post.date ? new Date(post.date) : undefined,
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
