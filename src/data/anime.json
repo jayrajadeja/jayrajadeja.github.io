@@ -1,14 +1,14 @@
 [
-  { "id": "naruto", "title": "Naruto", "kind": "anime" },
-  { "id": "one-piece", "title": "One Piece", "kind": "manga" },
-  { "id": "haikyuu", "title": "Haikyuu!!", "kind": "anime" },
-  { "id": "jjk", "title": "Jujutsu Kaisen", "kind": "anime" },
-  { "id": "dandadan", "title": "Dandadan", "kind": "anime" },
-  { "id": "attack-on-titan", "title": "Attack on Titan", "kind": "anime" },
-  { "id": "black-clover", "title": "Black Clover", "kind": "anime" },
-  { "id": "death-note", "title": "Death Note", "kind": "anime" },
-  { "id": "fullmetal-alchemist", "title": "Fullmetal Alchemist", "kind": "anime" },
-  { "id": "code-geass", "title": "Code Geass", "kind": "anime" },
-  { "id": "psycho-pass", "title": "Psycho-Pass", "kind": "anime" },
-  { "id": "steins-gate", "title": "Steins;Gate", "kind": "anime" }
+  { "id": "naruto", "title": "Naruto", "kind": "anime", "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx20-dE6UHbFFg1A5.jpg" },
+  { "id": "one-piece", "title": "One Piece", "kind": "manga", "cover": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx30013-BeslEMqiPhlk.jpg" },
+  { "id": "haikyuu", "title": "Haikyuu!!", "kind": "anime", "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx20464-ooZUyBe4ptp9.png" },
+  { "id": "jjk", "title": "Jujutsu Kaisen", "kind": "anime", "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx113415-LHBAeoZDIsnF.jpg" },
+  { "id": "dandadan", "title": "Dandadan", "kind": "anime", "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx171018-60q1B6GK2Ghb.jpg" },
+  { "id": "attack-on-titan", "title": "Attack on Titan", "kind": "anime", "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx16498-buvcRTBx4NSm.jpg" },
+  { "id": "black-clover", "title": "Black Clover", "kind": "anime", "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx97940-fyh8o7gNbha0.png" },
+  { "id": "death-note", "title": "Death Note", "kind": "anime", "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx1535-kUgkcrfOrkUM.jpg" },
+  { "id": "fullmetal-alchemist", "title": "Fullmetal Alchemist", "kind": "anime", "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx121-zjmixZ428Mwv.png" },
+  { "id": "code-geass", "title": "Code Geass", "kind": "anime", "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b126169-H7bkp7C91o9X.jpg" },
+  { "id": "psycho-pass", "title": "Psycho-Pass", "kind": "anime", "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx13601-i42VFuHpqEOJ.jpg" },
+  { "id": "steins-gate", "title": "Steins;Gate", "kind": "anime", "cover": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx9253-tIUXF2gfU8Sg.jpg" }
 ]

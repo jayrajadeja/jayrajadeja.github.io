@@ -198,26 +198,43 @@ export default function InterestsPage() {
         </SectionHeader>
 
         <ul
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
           aria-label="Anime and manga I follow"
         >
           {anime.map((entry) => (
             <li
               key={entry.id}
-              className="flex flex-col gap-3 border border-outline-variant/40 rounded-lg p-4 bg-surface-container-low hover:border-outline-variant/70 transition-colors"
+              className="flex items-center gap-3 border border-outline-variant/40 rounded-lg p-3 bg-surface-container-low hover:border-outline-variant/70 transition-colors"
             >
-              <span
-                className={`self-start font-mono text-[10px] uppercase tracking-[0.18em] px-2 py-0.5 rounded border ${
-                  entry.kind === "anime"
-                    ? "text-primary border-primary/30"
-                    : "text-tertiary border-tertiary/30"
-                }`}
-              >
-                {entry.kind}
-              </span>
-              <span className="font-body text-lg leading-snug text-on-surface">
-                {entry.title}
-              </span>
+              {entry.cover ? (
+                <img
+                  src={entry.cover}
+                  alt=""
+                  loading="lazy"
+                  width={44}
+                  height={62}
+                  className="w-11 h-[62px] object-cover rounded shrink-0 border border-outline-variant/30 bg-surface-container"
+                />
+              ) : (
+                <div
+                  aria-hidden="true"
+                  className="w-11 h-[62px] rounded shrink-0 border border-outline-variant/30 bg-surface-container"
+                />
+              )}
+              <div className="flex flex-col gap-1.5 min-w-0">
+                <span
+                  className={`self-start font-mono text-[10px] uppercase tracking-[0.18em] px-2 py-0.5 rounded border ${
+                    entry.kind === "anime"
+                      ? "text-primary border-primary/30"
+                      : "text-tertiary border-tertiary/30"
+                  }`}
+                >
+                  {entry.kind}
+                </span>
+                <span className="font-body text-base leading-snug text-on-surface">
+                  {entry.title}
+                </span>
+              </div>
             </li>
           ))}
         </ul>
