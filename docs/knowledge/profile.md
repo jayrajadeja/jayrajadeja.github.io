@@ -37,7 +37,7 @@ Stored as curated data in `src/data/stats.json`. Source: `~/portfolio-export/` (
 ## Interests
 - Formula 1 — team Mercedes; drivers Lewis Hamilton and Max Verstappen.
 - Markets / finance — NASDAQ stocks, market fundamentals, crypto.
-- Anime / manga — Naruto, One Piece, Haikyuu, Jujutsu Kaisen.
+- Anime / manga — Naruto, One Piece, Haikyuu, Jujutsu Kaisen, Dandadan, Attack on Titan, Black Clover, Death Note, Fullmetal Alchemist, Code Geass, Psycho-Pass, Steins;Gate (and more).
 - Sport — table tennis, badminton.
 
 ## Library
