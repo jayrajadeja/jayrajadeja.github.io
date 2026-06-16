@@ -68,6 +68,23 @@ describe("runCommand", () => {
     });
   });
 
+  it("cd with no argument navigates home", () => {
+    expect(runCommand("cd", ctx).intent).toEqual({ type: "navigate", href: "/" });
+  });
+
+  it("open tolerates surrounding slashes on the target", () => {
+    expect(runCommand("open /writing/", ctx).intent).toEqual({
+      type: "navigate",
+      href: "/writing",
+    });
+  });
+
+  it("./status is case-insensitive", () => {
+    const r = runCommand("./STATUS", ctx);
+    expect(r.lines[0].tone).toBe("up");
+    expect(r.lines[0].text).toContain("5 yrs");
+  });
+
   it("open to an unknown page errors and yields no intent", () => {
     const r = runCommand("open nope", ctx);
     expect(r.intent).toBeUndefined();

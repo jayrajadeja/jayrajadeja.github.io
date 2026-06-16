@@ -61,7 +61,7 @@ function navigate(target: string | undefined): CommandResult {
       intent: { type: "navigate", href: "/" },
     };
   }
-  const name = target.toLowerCase().replace(/^\//, "");
+  const name = target.toLowerCase().replace(/^\/|\/$/g, "");
   const route = ROUTES.find((r) => r.name === name);
   if (!route) {
     return {
