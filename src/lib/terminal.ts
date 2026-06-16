@@ -7,7 +7,6 @@ export interface OutputLine {
 
 export type Intent =
   | { type: "navigate"; href: string }
-  | { type: "external"; href: string }
   | { type: "clear" };
 
 export interface CommandResult {

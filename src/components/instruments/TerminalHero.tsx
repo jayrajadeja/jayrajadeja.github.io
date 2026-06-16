@@ -39,7 +39,7 @@ function BlockView({ block }: { block: Block }) {
   return (
     <div className="space-y-0.5">
       <p>
-        <span className="text-tertiary">&gt;</span>{" "}
+        <span className="text-tertiary" aria-hidden="true">&gt;</span>{" "}
         <span className="text-on-surface">{block.input}</span>
       </p>
       {block.lines.map((line, i) => (
@@ -90,12 +90,6 @@ export default function TerminalHero({ tenureYears }: { tenureYears: string }) {
       return;
     }
 
-    try {
-      sessionStorage.setItem(SESSION_KEY, "1");
-    } catch {
-      /* ignore */
-    }
-
     setBlocks([]); // cleared before paint — no flash
     let cancelled = false;
     const wait = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
@@ -116,7 +110,14 @@ export default function TerminalHero({ tenureYears }: { tenureYears: string }) {
         setTyping(null);
         await wait(NEXT_MS);
       }
-      if (!cancelled) setReady(true);
+      if (!cancelled) {
+        try {
+          sessionStorage.setItem(SESSION_KEY, "1");
+        } catch {
+          /* ignore */
+        }
+        setReady(true);
+      }
     })();
 
     return () => {
@@ -144,8 +145,6 @@ export default function TerminalHero({ tenureYears }: { tenureYears: string }) {
     setInput("");
     if (result.intent?.type === "navigate") {
       router.push(result.intent.href);
-    } else if (result.intent?.type === "external") {
-      window.open(result.intent.href, "_blank", "noopener,noreferrer");
     }
   }
 
@@ -199,7 +198,7 @@ export default function TerminalHero({ tenureYears }: { tenureYears: string }) {
 
           {ready && (
             <p className="flex items-center">
-              <span className="text-tertiary shrink-0">&gt;</span>
+              <span className="text-tertiary shrink-0" aria-hidden="true">&gt;</span>
               <input
                 ref={inputRef}
                 value={input}
