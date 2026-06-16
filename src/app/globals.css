@@ -116,3 +116,19 @@ body {
     stroke-dashoffset: 0;
   }
 }
+
+.terminal-cursor {
+  animation: terminal-blink 1s step-end infinite;
+}
+
+@keyframes terminal-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-cursor {
+    animation: none;
+  }
+}

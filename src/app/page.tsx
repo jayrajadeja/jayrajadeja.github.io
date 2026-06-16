@@ -1,8 +1,7 @@
 import Link from "next/link";
 import StatsSection from "@/components/StatsSection";
-import TerminalBlock from "@/components/instruments/TerminalBlock";
+import TerminalHero from "@/components/instruments/TerminalHero";
 import Metric from "@/components/instruments/Metric";
-import StatusDot from "@/components/instruments/StatusDot";
 import Eyebrow from "@/components/Eyebrow";
 import CtaLink from "@/components/CtaLink";
 import { getAllPosts } from "@/lib/blog";
@@ -42,41 +41,7 @@ export default function HomePage() {
     <div className="pt-32 pb-24 px-8 max-w-5xl mx-auto">
       {/* ── 1. Terminal hero ─────────────────────────────────────── */}
       <section aria-labelledby="hero-lead" className="mb-28">
-        <TerminalBlock title="jayraj@engineering:~$">
-          <div className="space-y-1">
-            <p>
-              <span className="text-tertiary">&gt;</span>{" "}
-              <span className="text-on-surface">whoami</span>
-            </p>
-            <p className="text-on-surface-variant">
-              Jayraj Jadeja — Software Engineer II · Bengaluru
-            </p>
-            <p className="pt-2">
-              <span className="text-tertiary">&gt;</span>{" "}
-              <span className="text-on-surface">cat focus.txt</span>
-            </p>
-            <p className="text-on-surface-variant">
-              backend · distributed systems · event-driven · go / typescript
-            </p>
-            <p className="pt-2">
-              <span className="text-tertiary">&gt;</span>{" "}
-              <span className="text-on-surface">cat thesis.txt</span>
-            </p>
-            <p className="text-on-surface-variant">
-              markets &amp; distributed systems — the same problems in different
-              clothes
-            </p>
-            <p className="pt-2">
-              <span className="text-tertiary">&gt;</span>{" "}
-              <span className="text-on-surface">./status</span>
-            </p>
-            <p className="text-on-surface-variant">
-              <StatusDot color="up">
-                open to roles · {stats.tenureYears} yrs
-              </StatusDot>
-            </p>
-          </div>
-        </TerminalBlock>
+        <TerminalHero tenureYears={stats.tenureYears} />
 
         {/* honest delivery telemetry — static, sourced from stats.json */}
         <div className="mt-8 flex flex-wrap gap-x-12 gap-y-6">
