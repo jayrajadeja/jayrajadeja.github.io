@@ -57,6 +57,8 @@ export interface AnimeEntry {
   id: string;
   title: string;
   kind: "anime" | "manga";
+  /** Optional cover-image URL (AniList CDN, fetched at build by scripts/fetch-anime-covers.mjs). */
+  cover?: string;
 }
 
 export interface FieldNote {
