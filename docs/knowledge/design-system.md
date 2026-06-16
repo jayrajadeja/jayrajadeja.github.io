@@ -160,3 +160,8 @@ Components for displaying live/baked data. Import from `@/components/instruments
 **Props:** `end: number`, `durationMs?: number` (default 1200), `format?: (n: number) => string`, `className?: string`.
 **SSR:** Renders the real final number immediately (no hydration flash). Animation starts only client-side when the element enters the viewport.
 **When to use:** Career stats headline numbers, any prominent count metric.
+
+### `TerminalHero`
+**Purpose:** Client island. The interactive home hero: renders inside `TerminalBlock`, auto-types the intro on first visit (motion-permitting), then accepts typed commands and clickable command chips, routing via the pure `terminal.ts` engine (`runCommand`). Degrades to the static intro with no JS / reduced motion.
+**Props:** `tenureYears: string` — passed from `stats.tenureYears`.
+**When to use:** Home page hero only — do not instantiate elsewhere.
