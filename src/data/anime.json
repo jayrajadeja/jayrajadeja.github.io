@@ -2,5 +2,13 @@
   { "id": "naruto", "title": "Naruto", "kind": "anime" },
   { "id": "one-piece", "title": "One Piece", "kind": "manga" },
   { "id": "haikyuu", "title": "Haikyuu!!", "kind": "anime" },
-  { "id": "jjk", "title": "Jujutsu Kaisen", "kind": "anime" }
+  { "id": "jjk", "title": "Jujutsu Kaisen", "kind": "anime" },
+  { "id": "dandadan", "title": "Dandadan", "kind": "anime" },
+  { "id": "attack-on-titan", "title": "Attack on Titan", "kind": "anime" },
+  { "id": "black-clover", "title": "Black Clover", "kind": "anime" },
+  { "id": "death-note", "title": "Death Note", "kind": "anime" },
+  { "id": "fullmetal-alchemist", "title": "Fullmetal Alchemist", "kind": "anime" },
+  { "id": "code-geass", "title": "Code Geass", "kind": "anime" },
+  { "id": "psycho-pass", "title": "Psycho-Pass", "kind": "anime" },
+  { "id": "steins-gate", "title": "Steins;Gate", "kind": "anime" }
 ]

@@ -197,29 +197,26 @@ export default function InterestsPage() {
           Anime &amp; Manga
         </SectionHeader>
 
-        <ul className="divide-y divide-outline-variant/30">
-          {anime.map((entry, i) => (
+        <ul
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+          aria-label="Anime and manga I follow"
+        >
+          {anime.map((entry) => (
             <li
               key={entry.id}
-              className="grid grid-cols-1 md:grid-cols-[auto_1fr_auto] gap-x-6 gap-y-1 py-5 items-center"
+              className="flex flex-col gap-3 border border-outline-variant/40 rounded-lg p-4 bg-surface-container-low hover:border-outline-variant/70 transition-colors"
             >
               <span
-                className="font-mono text-sm text-tertiary"
-                aria-hidden="true"
-              >
-                [{String(i + 1).padStart(2, "0")}]
-              </span>
-              <span className="font-body text-lg text-on-surface">
-                {entry.title}
-              </span>
-              <span
-                className={`font-mono text-[11px] uppercase tracking-[0.15em] px-2 py-0.5 rounded border ${
+                className={`self-start font-mono text-[10px] uppercase tracking-[0.18em] px-2 py-0.5 rounded border ${
                   entry.kind === "anime"
                     ? "text-primary border-primary/30"
                     : "text-tertiary border-tertiary/30"
                 }`}
               >
                 {entry.kind}
+              </span>
+              <span className="font-body text-lg leading-snug text-on-surface">
+                {entry.title}
               </span>
             </li>
           ))}
