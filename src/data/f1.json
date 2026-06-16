@@ -1,17 +1,64 @@
 {
-  "asOf": "2026-06-01",
+  "asOf": "2026-06-16",
   "source": "build",
   "lastRace": {
-    "round": 5,
+    "round": 7,
     "season": "2026",
-    "name": "Canadian Grand Prix",
-    "date": "2026-05-24",
-    "winner": "Andrea Kimi Antonelli"
+    "name": "Barcelona Grand Prix",
+    "date": "2026-06-14",
+    "winner": "Lewis Hamilton"
   },
   "leader": {
     "driver": "Andrea Kimi Antonelli",
-    "points": 131,
-    "wins": 4,
+    "points": 156,
+    "wins": 5,
     "constructor": "Mercedes"
+  },
+  "standings": [
+    {
+      "pos": 1,
+      "driver": "Andrea Kimi Antonelli",
+      "points": 156,
+      "wins": 5,
+      "constructor": "Mercedes"
+    },
+    {
+      "pos": 2,
+      "driver": "Lewis Hamilton",
+      "points": 115,
+      "wins": 1,
+      "constructor": "Ferrari"
+    },
+    {
+      "pos": 3,
+      "driver": "George Russell",
+      "points": 106,
+      "wins": 1,
+      "constructor": "Mercedes"
+    },
+    {
+      "pos": 4,
+      "driver": "Charles Leclerc",
+      "points": 75,
+      "wins": 0,
+      "constructor": "Ferrari"
+    },
+    {
+      "pos": 5,
+      "driver": "Lando Norris",
+      "points": 73,
+      "wins": 0,
+      "constructor": "McLaren"
+    }
+  ],
+  "nextRace": {
+    "round": 8,
+    "season": "2026",
+    "name": "Austrian Grand Prix",
+    "date": "2026-06-28",
+    "time": "13:00:00Z",
+    "circuit": "Red Bull Ring",
+    "locality": "Spielberg",
+    "country": "Austria"
   }
 }

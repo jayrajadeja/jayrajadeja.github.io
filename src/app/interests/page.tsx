@@ -117,6 +117,54 @@ export default function InterestsPage() {
             </p>
           </div>
         )}
+
+        {/* Championship standings — top 5 */}
+        {f1.standings && f1.standings.length > 0 && (
+          <div className="mt-8">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-tertiary mb-3">
+              Championship · top 5 · as of {f1.asOf}
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full max-w-xl font-mono text-sm border-collapse">
+                <thead>
+                  <tr className="text-left text-outline border-b border-outline-variant/40">
+                    <th scope="col" className="py-1.5 pr-3 font-normal text-[11px] uppercase tracking-[0.15em]">#</th>
+                    <th scope="col" className="py-1.5 pr-3 font-normal text-[11px] uppercase tracking-[0.15em]">Driver</th>
+                    <th scope="col" className="py-1.5 pr-3 font-normal text-[11px] uppercase tracking-[0.15em]">Team</th>
+                    <th scope="col" className="py-1.5 pr-3 font-normal text-[11px] uppercase tracking-[0.15em] text-right">Pts</th>
+                    <th scope="col" className="py-1.5 font-normal text-[11px] uppercase tracking-[0.15em] text-right">Wins</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {f1.standings.map((s) => (
+                    <tr key={s.pos} className="border-b border-outline-variant/20">
+                      <td className="py-1.5 pr-3 text-outline">{s.pos}</td>
+                      <td className="py-1.5 pr-3 text-on-surface">{s.driver}</td>
+                      <td className="py-1.5 pr-3 text-on-surface-variant">{s.constructor ?? "—"}</td>
+                      <td className="py-1.5 pr-3 text-tertiary text-right">{s.points}</td>
+                      <td className="py-1.5 text-on-surface-variant text-right">{s.wins}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* Next race */}
+        {f1.nextRace && (
+          <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.18em] text-on-surface-variant">
+            <span className="text-tertiary">Next Race</span>
+            {" · "}
+            {f1.nextRace.name}
+            {" — "}
+            {f1.nextRace.date}
+            {f1.nextRace.circuit && ` · ${f1.nextRace.circuit}`}
+            {f1.nextRace.locality &&
+              f1.nextRace.country &&
+              ` · ${f1.nextRace.locality}, ${f1.nextRace.country}`}
+          </p>
+        )}
       </section>
 
       {/* ── 3. Markets ───────────────────────────────────────────── */}
