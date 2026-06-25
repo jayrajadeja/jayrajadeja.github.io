@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/interests" },
   title: "Curated Interests",
   description:
-    "Formula 1, markets, anime, sport, the shelf, and systems I've studied — the obsessions that run alongside the work.",
+    "Formula 1, markets, anime, gaming, sport, the shelf, and systems I've studied — the obsessions that run alongside the work.",
 };
 
 const interests = interestsRaw as InterestsData;
@@ -48,7 +48,7 @@ export default function InterestsPage() {
         </h1>
         <p className="mt-6 max-w-2xl font-body text-xl md:text-2xl italic leading-relaxed text-on-surface-variant">
           The obsessions that run alongside the work — paddock strategy, market
-          mechanics, systems architecture, and the shelf.
+          mechanics, Counter-Strike, systems architecture, and the shelf.
         </p>
       </section>
 
@@ -261,6 +261,56 @@ export default function InterestsPage() {
             </li>
           ))}
         </ul>
+      </section>
+
+      {/* ── 5b. Gaming ───────────────────────────────────────────── */}
+      <section aria-labelledby="gaming-heading" className="mb-24">
+        <SectionHeader eyebrow="gaming" id="gaming-heading">
+          Gaming
+        </SectionHeader>
+
+        <p className="max-w-2xl font-body text-lg leading-relaxed text-on-surface-variant mb-8">
+          {interests.gaming.note}
+        </p>
+
+        <ul
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+          aria-label="Counter-Strike versions I've played"
+        >
+          {interests.gaming.counterStrike.map((g) => (
+            <li
+              key={g.title}
+              className="flex items-baseline justify-between gap-4 bg-surface-container-low rounded-lg px-6 py-5 border border-outline-variant/30 hover:border-outline-variant/70 transition-colors"
+            >
+              <span className="font-headline text-xl md:text-2xl font-bold tracking-tight text-on-surface">
+                {g.title}
+              </span>
+              <span className="font-mono text-sm text-tertiary tabular-nums">
+                {g.year}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* ── 5c. Travel (provisional) ─────────────────────────────── */}
+      <section aria-labelledby="travel-heading" className="mb-24">
+        <SectionHeader eyebrow="travel" id="travel-heading">
+          Travel
+        </SectionHeader>
+        <p className="font-mono text-sm uppercase tracking-[0.15em] text-outline">
+          {interests.travel.note}
+        </p>
+      </section>
+
+      {/* ── 5d. Photography (provisional) ────────────────────────── */}
+      <section aria-labelledby="photography-heading" className="mb-24">
+        <SectionHeader eyebrow="photography" id="photography-heading">
+          Photography
+        </SectionHeader>
+        <p className="font-mono text-sm uppercase tracking-[0.15em] text-outline">
+          {interests.photography.note}
+        </p>
       </section>
 
       {/* ── 6. The shelf — books + papers ────────────────────────── */}
