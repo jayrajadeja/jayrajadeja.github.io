@@ -1,5 +1,16 @@
 {
   "f1": { "favoriteTeam": "Mercedes", "favoriteDrivers": ["Lewis Hamilton", "Max Verstappen"], "note": "Team I root for: Mercedes. Drivers I rate: Hamilton and Verstappen — extreme engineering, data-driven decisions, and human limit-testing." },
   "markets": { "note": "NASDAQ names and market fundamentals — reading the mechanics underneath the price.", "focus": ["NASDAQ", "fundamentals", "crypto"] },
-  "sport": { "note": "Table tennis and badminton — fast hands, faster decisions.", "play": ["Table tennis", "Badminton"] }
+  "sport": { "note": "Table tennis and badminton — fast hands, faster decisions.", "play": ["Table tennis", "Badminton"] },
+  "gaming": {
+    "note": "Counter-Strike since 1.6 — every version Valve has shipped. Two decades of the same core loop: economy, map control, and five-on-five coordination.",
+    "counterStrike": [
+      { "title": "CS 1.6", "year": 2003 },
+      { "title": "CS: Source", "year": 2004 },
+      { "title": "CS:GO", "year": 2012 },
+      { "title": "CS2", "year": 2023 }
+    ]
+  },
+  "travel": { "note": "More soon." },
+  "photography": { "note": "More soon." }
 }
