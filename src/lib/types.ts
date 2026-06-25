@@ -73,6 +73,12 @@ export interface InterestsData {
   f1: { favoriteTeam: string; favoriteDrivers: string[]; note: string };
   markets: { note: string; focus: string[] };
   sport: { note: string; play: string[] };
+  gaming: {
+    note: string;
+    counterStrike: { title: string; year: number }[];
+  };
+  travel: { note: string };
+  photography: { note: string };
 }
 
 export interface NowData {
