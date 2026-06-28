@@ -18,10 +18,10 @@
 
 ## Verified contribution metrics (Jira + GitHub, 2021–2026 — aggregate only, safe to publish)
 Stored as curated data in `src/data/stats.json`. Source: `~/portfolio-export/` (Jira API + GitHub GraphQL, cross-checked against local git).
-- ~5 years; 788 issues delivered (695 resolved, 88%); median cycle time 9 days.
-- 626 pull requests (582 merged, 93%); ~26 PRs/month; ~157 issues/year.
-- 539,956 lines changed across all repos — GitHub-measured 214,956 (+185,782 / -29,174) plus an earlier Bitbucket repo the Jira+GitHub export couldn't reach; 2,682 commits; 4,298 files; 18 repositories.
-- 6,719 review submissions received; 1,444 discussion comments.
+- ~5 years; 800 issues delivered (708 resolved, 88%); median cycle time 9 days.
+- 673 pull requests (620 merged, 92%); ~21 PRs/month; ~157 issues/year.
+- 587,109 lines changed across all repos — GitHub-measured 262,109 (+228,617 / -33,492) plus an earlier Bitbucket repo the Jira+GitHub export couldn't reach; 2,893 commits; 4,817 files; 21 repositories.
+- 6,783 review submissions received; 1,506 discussion comments.
 
 ## Systems I've studied (curiosity, NOT employment)
 - Flagship: YouTube video processing, financial data store solutioning.
